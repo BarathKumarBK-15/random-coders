@@ -1,0 +1,155 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Regular'), 
+       local('Roboto-Regular'), 
+       url(http://themes.googleusercontent.com/static/fonts/roboto/v11/2UX7WLTfW3W8TclTUvlFyQ.woff) 
+       format('woff');
+}
+body{
+	text-align: center;
+	font-family: "Roboto";
+	background-color: #FFFFFF;
+	color: #272727;
+}
+header{
+	background: #272727;
+	background: url(../images/bg.png);
+	background-position: center;
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 2.5% 0%;
+	color: #747474;
+	border-radius: 0px;
+	height: 100vh;
+	top: 0;
+	right: 0;
+	left: 0;
+}
+h1{
+	padding-top: 20vh;
+	font-family: Cambria;
+	font-size: 400%;
+	color: #edf5e1;
+}
+a{
+	text-decoration: none;
+	color: white;
+}
+img{
+	display: inline-block;
+	width: 25%;
+	min-width: 400px;
+	height: 50%;
+	margin: 20px;
+}
+button{
+	margin:  1% 24%;
+	width: 50%;
+	background: url(../images/footerbg.png);
+	background-position: bottom;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: #FFFFFF;
+	font-size: 130%;
+	border-radius: 5px;
+	border: none;
+	font-family: 'Roboto';
+}
+button:hover{
+	font-size: 1.25rem;
+	width: 49.85%;
+}
+nav a:hover{
+	background-color: #000000a6;
+}
+footer{
+	padding-top: 10px;
+	height: 25vh;
+	width: 100%;
+	background: url(../images/footerbg.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+	font-size: 1.2em;
+	margin: auto;
+}
+main{
+	margin-bottom: 13vh;
+}
+nav a{
+	display: inline-block;
+	text-align: right;
+	border: none;
+	border-radius: 2px;
+	width:10vw;
+	padding: 3px;
+	margin-right: .5%;
+	color: #FFFFFF;
+	font-size: 1em;
+	font-family: "Roboto";
+	font-weight: bold;
+}
+nav{
+	text-align: right;
+}
+nav a{
+	text-align: center;
+}
+div{
+	text-align: left;
+	margin: 10px;
+	padding: 10px;
+}
+.even{
+	border-radius: 15px;
+	background: url(../images/evenbg.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 2;
+	color: #FFFFFF;
+}
+.even>div{
+	color: #000000;
+}
+.inimg{
+	width: 15%;
+}
+@media only screen AND (max-width: 1000px) {
+  	header{
+		background: #272727;
+		background: url(../images/bg.png);
+		background-position: center;
+		background-position: right;
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding: 2.5% 0%;
+		color: #747474;
+		border-radius: 0px;
+		height: 25vh;
+		top: 0;
+		right: 0;
+		left: 0;
+	}
+	.inimg{
+		width: 25%;
+	}
+	footer{
+		padding-top: 10px;
+		height: 10vh;
+		width: 100%;
+		background: url(../images/footerbg.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+		color: white;
+		font-size: 1.2em;
+		margin-bottom: 0px;
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+}

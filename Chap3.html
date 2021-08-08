@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>RandomCoders:Chapter3</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/jpeg" 
+	href="images/icon.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/rc.css"/>
+	<script type="text/javascript" src="js/rc.js"></script>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ps.html">Practice</a>
+        <a href="q.html">Contests</a>
+        <a href="Solutions.html">Solutions</a>
+        <a href="aboutus.html">About Us</a>
+    </nav>
+</header>
+<main>
+    <br><br>
+	<nav>
+		<button onclick="prob(1)">Problem:1 Kiruba Under Scrutiny!</button>
+		<button onclick="prob(2)">Problem:2 Kiruba's Performance Crisis...</button>
+		<button onclick="prob(3)">Problem:3 Kiruba's Mistakes Revealed!</button>
+		<button onclick="prob(4)">Problem:4 Will Kiruba Leave?</button>
+	</nav>
+	<div id="1">
+		<h2>Problem 1: Kiruba Under Scrutiny!</h2>
+		<p>
+			<h3>Problem Statement</h3>
+Kiruba, one of the problem setter and tester of RANDOM CODERS, is brought under scrutiny by Barath, the Admin of RANDOM CODERS due to Kiruba's poor setting and unbalanced difficulty in Chapter - 2 which was not at all suitable for beginners. So, to really test his skills, Barath gave him a task to perform. The tasks states that, given a binary string, interchange the positions of 1's and 0's and convert it into its decimal equivalent. Formally, for a given binary string S, perform the following operations.<br><br>
+* If S[i] is '0' change it to '1'.<br>
+* If S[i] is '1' change it to '0'.<br>
+* Convert the resultant binary string into its decimal equivalent.<br><br>
+Since, Kiruba was really upset about being scrutinized, he wants you to help him to solve this.
+			<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer, T representing the no. of test cases.<br>
+* The first line of each test case contains a single integer, N representing the length of binary string.<br>
+* The second line of each test case contains a binary string, S of length N.<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 100<br>
+* 1 <= n < 32<br>
+* 0 <= S[i] <= 1<br><br>
+            <h3>Output Format</h3>
+* For each test case, print the decimal equivalent of the given binary string after performing the required operations.<br><br>
+			<h3>Sample Input 0</h3>
+3<br>
+3<br>
+101<br>
+5<br>
+01101<br>
+1<br>
+1<br><br>
+			<h3>Sample Output 0</h3>
+2<br>
+18<br>
+0<br><br>
+			<h3>Explanation 0</h3>
+* Case 1: By converting all one's to zero's and vice versa, 101 become 010 which is binary equivalent of 2<br>
+* Case 2: Similarly 01101 becomes 10010 whose decimal equivalent is 18<br>
+* Case 3: Similarly 1 becomes 0 whose decimal value is also 0<br><br>
+			<h3>Approach</h3>
+- In the given string, if S[i] == '0', change it to '1'.<br>
+- If S[i] == '1', change it to '0'.<br>
+- Then convert the resultant binary string to its decimal equivalent.<br><br>
+			<h3>Code in C++</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;iostream&gt;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">power</span>(<span style="color: #333399; font-weight: bold">int</span> base , <span style="color: #333399; font-weight: bold">int</span> pow) {
+    <span style="color: #008800; font-weight: bold">if</span>(pow <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>)
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+    <span style="color: #008800; font-weight: bold">if</span>(pow <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>)
+        <span style="color: #008800; font-weight: bold">return</span> power(base <span style="color: #333333">*</span> base , pow <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>);
+    <span style="color: #008800; font-weight: bold">else</span>
+        <span style="color: #008800; font-weight: bold">return</span> base <span style="color: #333333">*</span> power(base <span style="color: #333333">*</span> base , (pow <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>) <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>);
+}
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    <span style="color: #333399; font-weight: bold">int</span> t;
+    cin <span style="color: #333333">&gt;&gt;</span> t;
+    <span style="color: #008800; font-weight: bold">while</span>(t<span style="color: #333333">--</span>) {
+        <span style="color: #333399; font-weight: bold">int</span> n;
+        cin <span style="color: #333333">&gt;&gt;</span> n;
+        string s;
+        cin <span style="color: #333333">&gt;&gt;</span> s;
+        <span style="color: #333399; font-weight: bold">int</span> ans <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span> , mul <span style="color: #333333">=</span> s.length() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> s.length() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>; i <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i<span style="color: #333333">--</span>) {
+            <span style="color: #008800; font-weight: bold">if</span>(s[i] <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;0&#39;</span>)
+                ans <span style="color: #333333">+=</span> power(<span style="color: #0000DD; font-weight: bold">2</span> , mul <span style="color: #333333">-</span> i);
+        }
+        cout <span style="color: #333333">&lt;&lt;</span> ans <span style="color: #333333">&lt;&lt;</span> endl;
+    }
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">btod</span>(b):
+    dec<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>
+    term<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #008800; font-weight: bold">while</span> <span style="color: #007020">len</span>(b):
+        dec<span style="color: #333333">+=</span><span style="color: #007020">int</span>(b[<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>])<span style="color: #333333">*</span>term
+        term<span style="color: #333333">*=</span><span style="color: #0000DD; font-weight: bold">2</span>
+        b<span style="color: #333333">=</span>b[:<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]
+    <span style="color: #008800; font-weight: bold">return</span> dec
+
+t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> k <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    s<span style="color: #333333">=</span><span style="color: #007020">input</span>()
+    <span style="color: #007020">print</span>(<span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">**</span>n<span style="color: #333333">-</span>(btod(s)<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>))
+</pre></div>
+</p>
+	</div>
+	<div id="2" class="even">
+		<p>
+			<h2>Problem 2: Kiruba's Performance Crisis...</h2>
+			<h3>Problem Statement</h3>
+Barath is not happy with Kiruba's performance of problem setting in Chapter - 2, so he told Rachit, Designer and Maintance Head of Random Coders to check on Kiruba's performance record for previous N days and told him to check whether he passes the required performance criteria or not. Now, Rachit comes up with a new strategy to compute Kiruba's performance. He converts the linear data of N days into circular form and considers the performance value only if it is strictly greater than the previous and next day's performance. If this condition is satisfied, the performance value is added to Kiruba's net performance. After this process, if the net performance is lesser than minimum performance required to pass the performance criteria print 'NO', else print 'YES'.<br><br>
+Note: Circular data is same as linear data except the fact that, in circular data, the last element is left to first element and the first element is right to last element. Eg: [1,2,3,4], 4 is left to 1 and 1 is right to 4.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer, t representing the no. of test cases.<br>
+* The first line of each test case contains a single integer, N representing the length of the array.<br>
+* The second line of each test case contains N space separated integers, representing circular array, A the performance of Kiruba on each day.<br>
+* The third line of each test case contains a single integer, k representing the minimum performance required to pass the performance criteria.<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 100<br>
+* 2 <= N <= 100<br>
+* 1 <= A[i] <= 100<br>
+* 1 <= k <= 1500<br><br>			
+			<h3>Output Format</h3>
+* For each test case, print "YES" or "NO" (without quotes).<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+5<br>
+1 3 4 2 5<br>
+8<br>
+2<br>
+3 3<br>
+1<br><br>
+			<h3>Sample Output 0</h3>
+YES<br>
+NO<br><br>
+			<h3>Explanation</h3>
+* Case 1: Kiruba hits high performance on days 2 and 5. Therefore total performance = 4 + 5 = 9, which clears the basic requirement. Thus print "YES"<br>
+* Case 2: Similay here the total performance is zero, which is less than the one required. Thus print "NO"<br><br>
+			<h3>Approach</h3>
+- If performance of a day is strictly greater than pervious and next day, add it to the net performance.<br>
+- If net performance is lesser than the minimum required then print "NO", else print "YES" (without quotes).<br><br>
+			<h3>Code in C++</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;iostream&gt;</span>
+<span style="color: #557799">#include &lt;vector&gt;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    <span style="color: #333399; font-weight: bold">int</span> t;
+    cin <span style="color: #333333">&gt;&gt;</span> t;
+    <span style="color: #008800; font-weight: bold">while</span>(t<span style="color: #333333">--</span>) {
+        <span style="color: #333399; font-weight: bold">int</span> n;
+        cin <span style="color: #333333">&gt;&gt;</span> n;
+        vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> a;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> n; i<span style="color: #333333">++</span>) {
+            <span style="color: #333399; font-weight: bold">int</span> element;
+            cin <span style="color: #333333">&gt;&gt;</span> element;
+            a.push_back(element);
+        }
+        <span style="color: #333399; font-weight: bold">int</span> k;
+        cin <span style="color: #333333">&gt;&gt;</span> k;
+        <span style="color: #333399; font-weight: bold">int</span> ans <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> n; i<span style="color: #333333">++</span>) {
+            <span style="color: #008800; font-weight: bold">if</span>(i <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #333333">&amp;&amp;</span> i <span style="color: #333333">&lt;</span> n <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>) {
+                <span style="color: #008800; font-weight: bold">if</span>(a[i <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>] <span style="color: #333333">&lt;</span> a[i] <span style="color: #333333">&amp;&amp;</span> a[i] <span style="color: #333333">&gt;</span> a[i <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>]) {
+                    ans <span style="color: #333333">+=</span> a[i];
+                }
+            }
+            <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span>(i <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>) {
+                <span style="color: #008800; font-weight: bold">if</span>(a[n <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>] <span style="color: #333333">&lt;</span> a[i] <span style="color: #333333">&amp;&amp;</span> a[i] <span style="color: #333333">&gt;</span> a[i <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>]) {
+                    ans <span style="color: #333333">+=</span> a[i];
+                }
+            }
+            <span style="color: #008800; font-weight: bold">else</span> {
+                <span style="color: #008800; font-weight: bold">if</span>(a[i <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>] <span style="color: #333333">&lt;</span> a[i] <span style="color: #333333">&amp;&amp;</span> a[i] <span style="color: #333333">&gt;</span> a[<span style="color: #0000DD; font-weight: bold">0</span>]) {
+                    ans <span style="color: #333333">+=</span> a[i];
+                }
+            }
+        }
+        <span style="color: #008800; font-weight: bold">if</span>(ans <span style="color: #333333">&lt;</span> k)
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;NO&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+        <span style="color: #008800; font-weight: bold">else</span>
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;YES&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+    }
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> z <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    arr<span style="color: #333333">=</span><span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+    k<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    per<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #0000DD; font-weight: bold">1</span>,n<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>):
+        <span style="color: #008800; font-weight: bold">if</span> arr[i]<span style="color: #333333">&gt;</span>arr[i<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>] <span style="color: #000000; font-weight: bold">and</span> arr[i]<span style="color: #333333">&gt;</span>arr[i<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>]:
+            per<span style="color: #333333">+=</span>arr[i]
+    <span style="color: #008800; font-weight: bold">if</span> arr[<span style="color: #0000DD; font-weight: bold">0</span>]<span style="color: #333333">&gt;</span>arr[<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>] <span style="color: #000000; font-weight: bold">and</span> arr[<span style="color: #0000DD; font-weight: bold">0</span>]<span style="color: #333333">&gt;</span>arr[<span style="color: #0000DD; font-weight: bold">1</span>]:
+        per<span style="color: #333333">+=</span>arr[<span style="color: #0000DD; font-weight: bold">0</span>]
+    <span style="color: #008800; font-weight: bold">if</span> arr[<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]<span style="color: #333333">&gt;</span>arr[<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #000000; font-weight: bold">and</span> arr[<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]<span style="color: #333333">&gt;</span>arr[<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">2</span>]:
+        per<span style="color: #333333">+=</span>arr[<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]
+    <span style="color: #008800; font-weight: bold">if</span> per<span style="color: #333333">&gt;=</span>k:
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;YES&quot;</span>)
+    <span style="color: #008800; font-weight: bold">else</span>:
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;NO&quot;</span>)
+</pre></div>
+</p>
+	</div>
+	<div id=3>
+		<p>
+			<h2>Problem 3: Kiruba's Mistakes Revealed!</h2>
+			<h3>Problem Statement</h3>
+It was time for Chapter - 3 and the questions set by Kiruba was being tested. Undoubtedly there was a mistake in the question that was set by Kiruba. The original question was, given an array A of N elements, perform the following operations.<br><br>
+* Compute min(A[i] C (A[i] - 1) , A[i] P (A[i] - 1)).<br>
+* Print the sum of all such computations.<br><br>
+But in the above question it was found that, A[i] C (A[i] - 1) was always smaller than A[i] P (A[i] - 1). Therefore, it was not at all necessary to take min of those two parameters. So, to escape from being caught, Kiruba modified the question slightly. The new question now states that,<br><br>
+* Compute A[i] C (A[i] - 1), if A[i] is even.<br>
+* Compute A[i] P (A[i] - 1), if A[i] is odd.<br>
+* Print the sum of all such computations.<br>
+* Note 1: Since, the answer maybe very large, print the sum modulo 10^9 + 7.<br>
+* Note 2: n C r = (n!)/((n - r)! * r!) and n P r = (n!)/(n-r)!.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer, t representing the no. of test cases.<br>
+* The first line of each test case contains a single integer, N representing the length of an array.<br>
+* The second line of each test case contains N space separated integers, A[i] representing the elements of an array.<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 10<br>
+* 1 <= N <= 10000<br>
+* 1 <= A[i] <= 20<br><br>
+			<h3>Output Format</h3>
+* Print a single integer, representing the sum of all the required computations modulo 10^9 + 7<br><br>
+			<h3>Sample Input 0</h3>
+1 <br>
+3<br>
+2 3 4<br><br>
+			<h3>Sample Output 0</h3>
+12<br><br>
+			<h3>Explanation 0</h3>
+* The first element 2 is even, combination is 2 C (2-1) which is 2<br>
+* Since the second element 3, is odd, it gives 3 P (3-1) which is 6<br>
+* Similarly for the last element we get 4<br>
+* Thus the sum is 2+6+4=12<br><br>
+			<h3>Approach</h3>
+- For the given array, if A[i] is even perform A[i] C (A[i] - 1).<br>
+- If A[i] is odd perform A[i] P (A[i] - 1).<br>
+- Compute the sum of each operation modulo 10^9 + 7.<br>
+- Note: Here A[i] C (A[i] - 1) is equal to A[i] and A[i] P (A[i] - 1) is equal to (A[i])!.<br><br>
+			<h3>Code in C++</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:none;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;iostream&gt;</span>
+<span style="color: #557799">#include &lt;vector&gt;</span>
+<span style="color: #557799">#define mod 1000000007</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">combination</span>(<span style="color: #333399; font-weight: bold">int</span> n , <span style="color: #333399; font-weight: bold">int</span> r) {
+    <span style="color: #008800; font-weight: bold">return</span> n;
+}
+
+<span style="color: #333399; font-weight: bold">long</span> <span style="color: #333399; font-weight: bold">long</span> <span style="color: #0066BB; font-weight: bold">permutation</span>(<span style="color: #333399; font-weight: bold">int</span> n , <span style="color: #333399; font-weight: bold">int</span> r) {
+    <span style="color: #333399; font-weight: bold">long</span> <span style="color: #333399; font-weight: bold">long</span> fac <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+    <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>; i <span style="color: #333333">&lt;=</span> n; i<span style="color: #333333">++</span>)
+        fac <span style="color: #333333">*=</span> i;
+    <span style="color: #008800; font-weight: bold">return</span> fac;
+}
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    <span style="color: #333399; font-weight: bold">int</span> t;
+    cin <span style="color: #333333">&gt;&gt;</span> t;
+    <span style="color: #008800; font-weight: bold">while</span>(t<span style="color: #333333">--</span>) {
+        <span style="color: #333399; font-weight: bold">int</span> n;
+        cin <span style="color: #333333">&gt;&gt;</span> n;
+        vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> a(n);
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> n; i<span style="color: #333333">++</span>)
+            cin <span style="color: #333333">&gt;&gt;</span> a[i];
+        <span style="color: #333399; font-weight: bold">long</span> <span style="color: #333399; font-weight: bold">long</span> ans <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> n; i<span style="color: #333333">++</span>) {
+            <span style="color: #008800; font-weight: bold">if</span>(a[i] <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>) {
+                ans <span style="color: #333333">=</span> (ans <span style="color: #333333">+</span> combination(a[i] , a[i] <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>)) <span style="color: #333333">%</span> mod;
+            }
+            <span style="color: #008800; font-weight: bold">else</span> {
+                ans <span style="color: #333333">=</span> (ans <span style="color: #333333">+</span> permutation(a[i] , a[i] <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>)) <span style="color: #333333">%</span> mod;
+            }
+        }
+        cout <span style="color: #333333">&lt;&lt;</span> ans <span style="color: #333333">&lt;&lt;</span> endl;
+    }
+}
+</pre></div>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">fact</span>(x):
+    f<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #008800; font-weight: bold">while</span> x:
+        f<span style="color: #333333">*=</span>x
+        x<span style="color: #333333">-=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #008800; font-weight: bold">return</span> f
+
+t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> k <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    arr<span style="color: #333333">=</span><span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+    <span style="color: #007020">sum</span><span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n):
+        <span style="color: #008800; font-weight: bold">if</span> arr[i]<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span>:
+            <span style="color: #007020">sum</span><span style="color: #333333">+=</span>fact(arr[i])
+        <span style="color: #008800; font-weight: bold">else</span>:
+            <span style="color: #007020">sum</span><span style="color: #333333">+=</span>arr[i]
+    <span style="color: #007020">print</span>(<span style="color: #007020">sum</span><span style="color: #333333">%</span>(<span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">**</span><span style="color: #0000DD; font-weight: bold">9</span><span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">7</span>))
+</pre></div>
+</p>
+	</div>
+	<div id="4" class="even">
+		<h2>Problem 4: Will Kiruba Leave?</h2>
+		<p>
+			<h3>Problem Statement</h3>
+This week was really frustating for Kiruba and his teammates, since there were several rumours that Kiruba is leaving RANDOM CODERS. But surprisingly Kiruba was given a final opportunity to stay, and this was completely based on mere luck. His teammates gave him a string S (with lowercase English alphabets) of length N and told him to perform the following operations any no. of times (possibly zero).<br><br>
+* For valid i, remove S[i] from the string.
+After performing the given operation, if the resultant string is "kiruba", he will not leave RANDOM CODERS, else he will quit. Find whether Kiruba is leaving RANDOM CODERS or Not!. If he is leaving print "GOODBYE KIRUBA", else print "KIRUBA IS STAYING" (without quotes).<br><br>
+* Note: The resultant string should be "kiruba" only, any other permutations of this word will also result in Kiruba leaving.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer, t representing the no. of test cases.<br>
+* The first line of each test case contains a single integer, N representing the length of string S.<br>
+* The second line of each test case contains a string, S (with lowercase English alphabets) of length N.<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 1000<br>
+* 6 <= N <= 100<br><br>
+            <h3>Output Format</h3>
+* For every testcase, print "GOODBYE KIRUBA" if Kiruba is leaving, else print "KIRUBA IS STAYING" if Kiruba is staying.<br><br>
+			<h3>Sample Input 0</h3>
+3<br>
+6<br>
+kiruba<br>
+6<br>
+kirbua<br>
+12<br>
+zkkiarjubssa<br><br>
+			<h3>Sample Output 0</h3>
+KIRUBA IS STAYING<br>
+GOODBYE KIRUBA<br>
+KIRUBA IS STAYING<br><br>
+			<h3>Explanation 0</h3>
+* Case 1: The given word itself is kiruba thus print "KIRUBA IS STAYING"<br>
+* Case 2: There is no way to form the word kiruba after performing the given operations. Thus print "GOODBYE KIRUBA"<br>
+* Case 3: zk ki a r j ub ss a . Thus print "KIRUBA IS STAYING"<br><br>
+			<h3>Approach</h3>
+* For a given string S, first check whether the string has all the characters that the word "kiruba" has. If yes, proceed to next step, else print "GOODBYE KIRUBA".<br>
+* Then, check whether the string has all the characters in designated order. If yes, print "KIRUBA IS STAYING", else print "GOODBYE KIRUBA".
+<br>
+* Note 1: It is not mandatory to perform the first step. Performing only the second step will also result in correct answer.<br>
+* Note 2: Here designated order means, there is 'i' after 'k' and 'r' after 'i' and 'k' and so on in the word "kiruba". Therefore, in the given string also, make sure that 'i' is after 'k' and 'r' is after 'i' and 'k' and so on. There can be any no. of other characters in between the two required characters, but they must be in the designated order.<br><br>
+			<h3>Code in C++</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;iostream&gt;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    <span style="color: #333399; font-weight: bold">int</span> t;
+    cin <span style="color: #333333">&gt;&gt;</span> t;
+    <span style="color: #008800; font-weight: bold">while</span>(t<span style="color: #333333">--</span>) {
+        <span style="color: #333399; font-weight: bold">int</span> n;
+        cin <span style="color: #333333">&gt;&gt;</span> n;
+        string s;
+        cin <span style="color: #333333">&gt;&gt;</span> s;
+        <span style="color: #333399; font-weight: bold">bool</span> ans <span style="color: #333333">=</span> <span style="color: #007020">false</span>;
+        <span style="color: #333399; font-weight: bold">int</span> ch <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> n; i<span style="color: #333333">++</span>) {
+            <span style="color: #008800; font-weight: bold">if</span>(s[i] <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;k&#39;</span> <span style="color: #333333">&amp;&amp;</span> ch <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">1</span>)
+                ch<span style="color: #333333">++</span>;
+            <span style="color: #008800; font-weight: bold">if</span>(s[i] <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;i&#39;</span> <span style="color: #333333">&amp;&amp;</span> ch <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">2</span>)
+                ch<span style="color: #333333">++</span>;
+            <span style="color: #008800; font-weight: bold">if</span>(s[i] <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;r&#39;</span> <span style="color: #333333">&amp;&amp;</span> ch <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">3</span>)
+                ch<span style="color: #333333">++</span>;
+            <span style="color: #008800; font-weight: bold">if</span>(s[i] <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;u&#39;</span> <span style="color: #333333">&amp;&amp;</span> ch <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">4</span>)
+                ch<span style="color: #333333">++</span>;
+            <span style="color: #008800; font-weight: bold">if</span>(s[i] <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;b&#39;</span> <span style="color: #333333">&amp;&amp;</span> ch <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">5</span>)
+                ch<span style="color: #333333">++</span>;
+            <span style="color: #008800; font-weight: bold">if</span>(s[i] <span style="color: #333333">==</span> <span style="color: #0044DD">&#39;a&#39;</span> <span style="color: #333333">&amp;&amp;</span> ch <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">6</span>) {
+                ans <span style="color: #333333">=</span> <span style="color: #007020">true</span>;
+                <span style="color: #008800; font-weight: bold">break</span>;
+            }
+        }
+        <span style="color: #008800; font-weight: bold">if</span>(ans)
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;KIRUBA IS STAYING&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+        <span style="color: #008800; font-weight: bold">else</span>
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;GOODBYE KIRUBA&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+    }
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">kiruba</span>(s):
+    w<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;kiruba&quot;</span>
+    a<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #008800; font-weight: bold">while</span> <span style="color: #007020">len</span>(w):
+        a<span style="color: #333333">=</span>s<span style="color: #333333">.</span>find(w[<span style="color: #0000DD; font-weight: bold">0</span>])
+        <span style="color: #008800; font-weight: bold">if</span> a<span style="color: #333333">==-</span><span style="color: #0000DD; font-weight: bold">1</span>:
+            <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;GOODBYE KIRUBA&quot;</span>
+        s<span style="color: #333333">=</span>s[a<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>:]
+        w<span style="color: #333333">=</span>w[<span style="color: #0000DD; font-weight: bold">1</span>:]
+    <span style="color: #008800; font-weight: bold">return</span> <span style="background-color: #fff0f0">&quot;KIRUBA IS STAYING&quot;</span>
+
+t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> k <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    s<span style="color: #333333">=</span><span style="color: #007020">input</span>()
+    <span style="color: #007020">print</span>(kiruba(s))
+</pre></div>
+</p>
+	</div>
+</main>
+<footer>
+	<p>Instagram : <a href="https://www.instagram.com/randomcoders/" target="_blank">@randomcoders</a></p>
+	<p>email id  : randomcoders4@gmail.com</p>
+	<p>HackerRank: <a href="https://www.hackerrank.com/randomcoders4" target="_blank">randomcoders4</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PracticeSeries:Chapter-3</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/jpeg" 
+	href="images/icon.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/rc.css"/>
+	<script type="text/javascript" src="js/rc.js"></script>
+</head>
+<body>
+<header>
+	<nav>
+		<a href="index.html">Home</a>
+		<a href="ps.html">Practice</a>
+		<a href="q.html">Contests</a>
+		<a href="Solutions.html">Solutions</a>
+		<a href="aboutus.html">About Us</a>
+	</nav>
+</header>
+<main>
+	<br><br>
+	<nav>
+		<button onclick="prob(1)">Problem:1 Munchy's Puzzling Cakewalk?</button>
+		<button onclick="prob(2)">Problem:2 Dazzler and his palindrome</button>
+		<button onclick="prob(3)">Problem:3 Dazzler and his odd pairs for Munchy</button>
+		<button onclick="prob(4)">Problem:4 Shri-cular Array!</button>
+        <button onclick="prob(5)">Problem:5 Munchy's Dazzling Diagonals!</button>
+	</nav>
+	<div id="1">
+		<h2>Problem 1: Munchy's Puzzling Cakewalk?</h2>
+		<p>
+			<h3>Problem Statement</h3>
+Munchy survived the traps finally! And as usual , before he takes revenge on Dazzler he left a very tough-tougher-toughest question for the people.<br><br>
+You are given an array of N integers. You need to pick any two numbers A and B from the array and let the absolute difference between them be D.<br><br>
+You want to maximise the value of D.Find it.<br><br>
+			<h3>Input Format</h3>
+* The first line consists of T denoting the number of testcases.<br>
+* The second line consists of N the length of the array.<br>
+* The following line consists of N space-separated integers.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=10<br>
+* 2<=N<=100000<br>
+* 1<=Ai<=10^9<br><br>
+			<h3>Output Format</h3>
+* Print the maximum value of D.<br><br>
+			<h3>Sample Input 0</h3>
+1<br>
+3<br>
+1 2 3<br><br>
+			<h3>Sample Output 0</h3>
+2<br><br>
+			<h3>Explanation 0</h3>
+* Let A be 3 and let B be 1. The absolute difference is 3-1=2.And this is the maximum possible.<br><br>
+			<h3>Approach</h3>
+- We know that for a difference between two number x and y to be maximum, we need to increase the values of x as much as possible and y to decrease as much as possible.<br>
+- Hence, x can take the maximum value of the array and y can take the minimum value of the array.<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">while</span>(t):
+    t<span style="color: #333333">-=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    a<span style="color: #333333">=</span><span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+    <span style="color: #007020">print</span>(<span style="color: #007020">max</span>(a)<span style="color: #333333">-</span><span style="color: #007020">min</span>(a))
+</pre></div>
+</p>
+	</div>
+	<div id="2" class="even">
+		<p>
+			<h2>Problem 2: Dazzler and his palindrome</h2>
+			<h3>Problem Statement</h3>
+Dazzler know that Munchy will escape from the grid, so he has prepared more and more problems for him. One such problem is given below. Help Munchy to solve the problem.<br><br>
+You have been given with a binary string A of length N. You can permute the string in any way such that it forms a palindrome. formally you have to construct a string B with same number of '0's and same number of '1's as in A with a condition that it should be a palindrome.<br><br>
+You have to print "YES" (without quotes) if you can construct a string meeting the above conditions, else print "NO" (without quotes).<br><br>
+			<h3>Input Format</h3>
+* The first line consists of T denoting the number of testcases.
+* The first line of each test case consists of N denoting the length of the binary string.
+* The second line of each test case consists of binary string A of length N.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=1000<br>
+* 1<=N<=100000<br>
+* Sum of N over all test cases does not exceed 100000<br><br>			
+			<h3>Output Format</h3>
+* Print a single line for each testcase, "YES" if you can form a palindrome, else print "NO".<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+4<br>
+1010<br>
+5<br>
+10100<br><br>
+			<h3>Sample Output 0</h3>
+YES<br>
+YES<br><br>
+			<h3>Approach</h3>
+To have a palindrome, atleast one of count of any ony one of the bits should be even. ie.. either count of '1' should be even or count of '0' should be even<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> _ <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    a<span style="color: #333333">=</span><span style="color: #007020">input</span>()
+    c<span style="color: #333333">=</span>a<span style="color: #333333">.</span>count(<span style="background-color: #fff0f0">&#39;1&#39;</span>)
+    d<span style="color: #333333">=</span>a<span style="color: #333333">.</span>count(<span style="background-color: #fff0f0">&#39;0&#39;</span>)
+    <span style="color: #008800; font-weight: bold">if</span>(c<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #000000; font-weight: bold">or</span> d<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">0</span>):
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;YES&quot;</span>)
+    <span style="color: #008800; font-weight: bold">else</span>:
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;NO&quot;</span>)
+</pre></div>
+		</p>
+	</div>
+	<div id=3>
+		<p>
+			<h2>Problem 3: Dazzler and his odd pairs for Munchy</h2>
+			<h3>Problem Statement</h3>
+Dazzler realized his mistake and planned to find an odd ideal pair for Munchy. So he asked your help to count the number of odd pairs before finding the perfect pair.<br><br>
+You are given with an array A of length N consisting of non negative integers. You have to count the number of pairs such that a[ i ]+a[ j ] is an odd integer, where 1<=i<=N, i< j<=N.<br><br>
+			<h3>Input Format</h3>
+* The first line contains T which indicates the number of testcases.<br>
+* The first line of each test case contains N.<br>
+* The second line of each test case contains the array of length N<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=1000<br>
+* 2<=N<=100000<br>
+* The sum of N over all cases does not exceed 100000<br><br>
+			<h3>Output Format</h3>
+* For each test case print a single line indicating the number of pairs<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+3<br>
+1 2 3<br>
+3<br>
+3 3 3<br><br>
+			<h3>Sample Output 0</h3>
+2<br>
+0<br><br>
+			<h3>Explanation 0</h3>
+* We have two pairs 1+2=3 and 2+3=5.<br>
+* We have no pairs in the second case.<br><br>
+			<h3>Approach</h3>
+Multiply the number of odd integers and number of even integers to get the number of odd pairs, as to get a odd number we need to add an odd number with an even number.<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> _ <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    odd,even<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">0</span>
+    a<span style="color: #333333">=</span><span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n):
+        <span style="color: #008800; font-weight: bold">if</span>(a[i]<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">0</span>):
+            even<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span>
+        <span style="color: #008800; font-weight: bold">else</span>:
+            odd<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #007020">print</span>(odd<span style="color: #333333">*</span>even)
+</pre></div>
+		</p>
+</div>
+	<div id="4" class="even">
+		<p>
+			<h2>Problem 4: Shri-cular Array!</h2>
+			<h3>Problem Statement</h3>
+While Munchy was all set for a face-off with Dazzler, Munchy's long lost friend was busy with his games! Munchy decided to gain some power and he decided to meet Shri.<br><br>
+It was a normal day on the city of Hackers. Shri wanted to play with Munchy. He decided to play a game called "Game of Balls".<br>
+Help Munchy win the game and settle down for a good face-off.<br><br>
+You have N balls of different weights arranged in a row. Since the land of Hackers is magical the balls can have negative weights.<br>
+You have to choose some balls out of the N balls by following the below rules :<br><br>
+1. Choose any contiguous set (i,j) of balls (1 <= i <= j <= N).<br>
+2. The chosen set of balls should have the maximum weight(Sum of all chosen balls should be maximum).<br><br>
+You will be given an array W of N elements(ranging from 1 to N) with weights Wi of balls.<br>
+Your task is to choose any contiguous set of balls with maximum weight.<br>
+For example :<br><br>
+If N = 5 and W = [-1, 3, 4, 5, -4] max sum = 12 (3 + 4 + 5).<br>
+If N = 6 and W = [-5, 2, -1, 3, 4, -10] max sum = 8 (2 + (-1) + 3 + 4).<br><br>
+the required set of balls are bolded.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer T denoting the number of test cases.<br>
+* The description of T test cases is as follows.<br>
+* For each test case, the first line contains a single integer N.<br>
+* The second line contains N space-separated integers Wi, denoting the weights of the ith ball.<br><br>
+			<h3>Constraints</h3>
+* 1 <= T <= 10<br>
+* 1 <= N <= 10^5<br>
+* -1000 <= Wi <= 1000<br><br>			
+			<h3>Output Format</h3>
+* For each testcase, output a single line containing the maximum sum of weights of the balls.<br><br>
+			<h3>Sample Input 0</h3>
+3<br>
+5<br>
+-1 5 -4 -3 6<br>
+4<br>
+1 2 -3 4<br>
+3<br>
+1 2 3<br><br>
+			<h3>Sample Output 0</h3>
+6<br>
+4<br>
+6<br><br>
+			<h3>Approach</h3>
+- BASICS<br><br>
+Sub-array : A contiguous block of the original array elements.<br>
+Any array A with N element will have a total of (N * (N + 1)) / 2 sub-arrays.<br><br>
+- QUICK EXPLANATION<br><br>
+Given an array A with N elements, we've to find the sub-array with maximum sum. Find out sum of all the sub-arrays, and find the maximum among the sums.<br><br>
+DETAILED EXPLANATION<br><br>
+O(N^3) - will pass test-cases with N <= 500<br><br>
+In the given array, choose a particular subset (i, j) by looping through the array, and loop through the sub-array to find it's sum. Keep updating the sum for all the sub-arrays and find the maximum.<br><br>
+Approach 2 : O(N^2) - will pass test-cases with N <= 10^4<br><br>
+This approach is the continuation of approach 1, just that we'll not loop through every sub-array seperately, rather calculate the sum at the same time when the right end of the sub-array moves (j loop denotes the sub-array ending at j).<br><br>
+Approach 3 : O(N) - will pass test-cases with N <= 10^7<br><br>
+Approach 2 can be further optimised. Instead of calculating sum of sub-arrays with moving end-points, we can calculate the maximum sum of a sub-array which end at that point.<br><br>
+Consider the subproblem of ﬁnding the maximum-sum subarray that ends at position i. There are two possibilities:<br>
+1.The subarray only contains the element at position i ( [-1, -2, 3, -4, 5], here i = 2 (0 - based indexing) ).<br>
+2.The subarray consists of a subarray that ends at position i − 1, followed by the element at position i ([-1, 2, 3, 4, -5], here i = 3 we have a sub-array ending at i = 2, which has maximum sum).<br><br>
+In the latter case, since we want to ﬁnd a subarray with maximum sum, the subarray that ends at position i − 1 should also have the maximum sum. Thus, we can solve the problem efﬁciently by calculating the maximum subarray sum for each ending position from left to right.<br><br>
+This algorithm is called KADANE'S ALGORITHM.<br><br>	
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">N <span style="color: #333333">=</span> <span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+arr <span style="color: #333333">=</span> <span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">int</span>, <span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+
+<span style="color: #007020">sum</span>, max_sum <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, <span style="color: #0000DD; font-weight: bold">0</span>
+
+<span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(N) :
+    <span style="color: #007020">sum</span> <span style="color: #333333">=</span> <span style="color: #007020">max</span>(arr[i], <span style="color: #007020">sum</span> <span style="color: #333333">+</span> arr[i])
+    max_sum <span style="color: #333333">=</span> <span style="color: #007020">max</span>(<span style="color: #007020">sum</span>, max_sum)
+
+<span style="color: #007020">print</span>(max_sum)
+</pre></div>
+</p>
+	</div>
+    <div id="5">
+        <p>
+            <h2>Problem 5: Munchy's Dazzling Diagonals!</h2>
+            <h3>Problem Statement</h3>
+Dazzler realised his mistake and was about to ask sorry to Munchy. But Munchy had other plans as he was in a BEAST MODE and made Dazzler taste his own medicine. He made a trap for Dazzler and now Dazzler is stuck in it.Dazzler is smart and handsome too...so he doesn't want to die this time. Help him to reunite with Munchy!<br><br>
+Dazzler is in a grid with N rows and N columns.Initially the grid is empty and each cell doesn't have any values in it.<br><br>
+Dazzler need to fill this grid completely with any positive integer value starting from 1.<br><br>
+Dazzler need to fill it with some integers under following conditions:<br><br>
+1.In each possible diagonal ,it must always satisfy the condition that - no integer in that chosen diagonal must be repeated more than once, in other words all the integers in that diagonal must be distinct .<br>
+2.The power value should be as minimal as possible.<br><br>
+The power value of **N*N** grid is defined as the **concatenation of the filled integers** of the upward diagonals starting from row 1,2,3.....N and then the upward diagonals starting from the cells (N,2),(N,3)...(N,N).**Note that the concatenation order is important**.<br>
+See the image for better understanding:<br><br>
+<img style="width: 25%;" src="images/in3.jpeg"/><br><br>
+Here the power value is :<br><br>
+Upward diagonal values-<br>
+**1st Row- 1**<br>
+**2nd Row- 1 2**<br>
+**3rd Row- 1 2 3**<br><br>
+**(N,2)th diagonal upward value is- 2 1**<br><br>
+**(N,3)th diagonal upward value is- 3**<br><br>
+**Concatenating them in the order as mentioned-[1,1,2,1,2,3,2,1,3]**.<br><br>
+**The above is the smallest or lexicographically smallest concatenation possible**.<br><br>
+**Finally, now you need to find the maximum number of 1's possible in the above smallest or lexicographically smallest concatenated power value**.<br><br>
+**Then print the positions of all the 1's that can be filled in the above concatenated order.**<br><br>
+**If the total number of 1's is more than 100000, then print "SHROOV"(without quotes).<br><br>
+   Note that if N is 3.<br><br>
+   Then the following matrices are **not valid**.<br><br>
+   1 2 3        1 2 3<br>
+   1 2 2        1 2 3<br> 
+   1 2 3        1 1 3<br>
+            <h3>Input Format</h3>
+* The first line contains T denoting the number of testcases.<br>
+* The next line contains N denoting the grid's dimensions.<br><br>
+            <h3>Constraints</h3>
+* 1<=T<=100<br>
+* 1<=N<=10^18<br><br>           
+            <h3>Output Format</h3>
+* Output the maximum number of 1's possible in the smallest or lexicographically smallest concatenated power value.<br>
+* If the total number of 1's is less than or equal to 100000 , print their positions too, each of them in a separate line.<br>
+* If not so,print SHROOV.<br>
+* If there are multiple solutions possible output any of them<br><br>
+            <h3>Sample Input 0</h3>
+2<br>
+3<br>
+423727011565393481<br><br>
+            <h3>Sample Output 0</h3>
+4<br>
+1 1<br>
+2 1<br>
+3 1<br>
+2 3<br>
+635590517348090221<br>
+SHROOV<br><br>
+            <h3>Explanation 0</h3>
+* This is already explained in the problem statement. In the first case, the 1's are filled in the order...(1,1)th cell, (2,1)th cell, (3,1)th cell and finally in the (2,3)th cell.<br>
+* In the second case,the total number of 1's is 635590517348090221, which is more than 100000, so print SHROOV<br><br>
+            <h3>Approach</h3>
+- It's a pattern based question and if n is odd the answer is n+(n/2).<br>
+- Else if n is divisible by 2 but not 4 , the answer is n+(n/2)-1.<br>
+- Else if n is divisible by 4 then answer is n+(n/2).<br>
+- For positions of 1, Draw a sample matrix and check it out yourself.<br>
+- All the the 1's will be filled in first column itself.<br>
+- For remaining if n is odd , its filled in (n/2,(n/2)+2),(n/2,(n/2)+3).....(n/2,n).<br>
+- If n is even, its filled in (n/2-1,(n/2)+2),(n/2,(n/2)+2),(n/2-1,(n/2)+4),(n/2,(n/2)+4)......<br><br>            
+            <h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">while</span>(t):
+    t<span style="color: #333333">-=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    x<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    y<span style="color: #333333">=</span>(x<span style="color: #333333">+</span>(x<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>)<span style="color: #333333">-</span>((x<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">^</span> <span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">&amp;</span>((x<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>)<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span>)))
+    <span style="color: #007020">print</span>(y)
+    <span style="color: #008800; font-weight: bold">if</span>(y<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">100000</span>):
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;SHROOV&quot;</span>)
+    <span style="color: #008800; font-weight: bold">else</span>:
+        n<span style="color: #333333">=</span>x
+        <span style="color: #008800; font-weight: bold">if</span>(x<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span>):
+            <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n):
+                <span style="color: #007020">print</span>(i<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>,<span style="color: #0000DD; font-weight: bold">1</span>)
+            <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>):
+                <span style="color: #007020">print</span>((n<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>,((n<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>)<span style="color: #333333">+</span>i<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>)
+        <span style="color: #008800; font-weight: bold">else</span>:
+            <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n):
+                <span style="color: #007020">print</span>(i<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>,<span style="color: #0000DD; font-weight: bold">1</span>)
+            <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">4</span>):
+                c<span style="color: #333333">=</span>(n<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>)<span style="color: #333333">+</span>(<span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">*</span>(i<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>))
+                r<span style="color: #333333">=</span>(n<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>)
+                <span style="color: #007020">print</span>(r,c)
+                <span style="color: #007020">print</span>(r<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>,c)
+</pre></div>
+</p>
+    </div>
+</main>
+<footer>
+	<p>Instagram : <a href="https://www.instagram.com/randomcoders/" target="_blank">@randomcoders</a></p>
+	<p>email id  : randomcoders4@gmail.com</p>
+	<p>HackerRank: <a href="https://www.hackerrank.com/randomcoders4" target="_blank">randomcoders4</a></p>
+</footer>
+</body>
+</html>

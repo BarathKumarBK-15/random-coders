@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PracticeSeries:Chapter-1</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/jpeg" 
+	href="images/icon.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/rc.css"/>
+	<script type="text/javascript" src="js/rc.js"></script>
+</head>
+<body>
+<header>
+    <nav>
+        <br><br>
+        <a href="index.html">Home</a>
+        <a href="ps.html">Practice</a>
+        <a href="q.html">Contests</a>
+        <a href="Solutions.html">Solutions</a>
+        <a href="aboutus.html">About Us</a>
+    </nav>
+</header>
+<main>
+	<nav>
+		<button onclick="prob(1)">Problem:1 Munchy and Odd Parity</button>
+		<button onclick="prob(2)">Problem:2 Dazzler and his Ego</button>
+		<button onclick="prob(3)">Problem:3 Munchy vs Dazzler</button>
+		<button onclick="prob(4)">Problem:4 Munchy-Dazzler-Assemble</button>
+	</nav>
+	<div id="1">
+		<h2>Problem 1: Munchy and Odd Parity</h2>
+		<p>
+			<h3>Problem Statement</h3>
+Munchy recently got an array of N elements. Since he is happy about Dazzler's breakup with his girlfriend , he decided to do something "Odd" with the array. Help him pick any two numbers A and B from the array such that the sum of A and B is odd. If such a possible situation is there print YES. If not print NO.<br><br>
+			<h3>Input Format</h3>
+* The first line is T consisting number of testcases.<br>
+* The next line contains N denoting the number of elements of the array.<br>
+* Then next line consists of N space-separated integers of the array.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=10<br>
+* 2<=N<=100000 0<br><br>
+			<h3>Output Format</h3>
+* For each test case, print either YES or NO.<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+5<br>
+4 8 100 3 1<br>
+2<br>
+7 101<br><br>
+			<h3>Sample Output 0</h3>
+YES<br>
+NO<br><br>
+			<h3>Explanation 0</h3>
+* 1.In the first case he can pick 3 and 100 and the sum 103 is odd.<br>
+* 2.In the second case 7 + 101 gives 108 which is even.<br><br>
+			<h3>Approach</h3>
+* Addition of any even number with an odd number will always give an odd number. Count the number of even and odd numbers in the array.<br>
+* If both the counts are greater than 0 , then it is possible else not.<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius: 15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">math</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">collections</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">random</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">bisect</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">sys</span>
+<span style="color: #007020">input</span><span style="color: #333333">=</span>sys<span style="color: #333333">.</span>stdin<span style="color: #333333">.</span>readline
+t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">while</span>(t):
+    t<span style="color: #333333">-=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    r<span style="color: #333333">=</span><span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+    s<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;NO&#39;</span>
+    e,o<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">0</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> r:
+        <span style="color: #008800; font-weight: bold">if</span>(i<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span>):
+            e<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>
+        <span style="color: #008800; font-weight: bold">else</span>:
+            o<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #008800; font-weight: bold">if</span>(o<span style="color: #333333">&amp;</span>e):
+        s<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;YES&#39;</span>
+    <span style="color: #007020">print</span>(s)
+</pre></div>
+			<h3>Code in C++</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;iostream&gt;</span>
+<span style="color: #557799">#include &lt;vector&gt;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    <span style="color: #333399; font-weight: bold">int</span> t;
+    cin <span style="color: #333333">&gt;&gt;</span> t;
+    <span style="color: #008800; font-weight: bold">while</span>(t<span style="color: #333333">--</span>) {
+        <span style="color: #333399; font-weight: bold">int</span> n;
+        cin <span style="color: #333333">&gt;&gt;</span> n;
+        <span style="color: #333399; font-weight: bold">bool</span> even <span style="color: #333333">=</span> <span style="color: #007020">false</span> , odd <span style="color: #333333">=</span> <span style="color: #007020">false</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> n; i<span style="color: #333333">++</span>) {
+            <span style="color: #333399; font-weight: bold">int</span> element;
+            cin <span style="color: #333333">&gt;&gt;</span> element;
+            <span style="color: #008800; font-weight: bold">if</span>(element <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>)
+                even <span style="color: #333333">=</span> <span style="color: #007020">true</span>;
+            <span style="color: #008800; font-weight: bold">else</span>
+                odd <span style="color: #333333">=</span> <span style="color: #007020">true</span>;
+        }
+        <span style="color: #008800; font-weight: bold">if</span>(even <span style="color: #333333">&amp;&amp;</span> odd)
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;YES&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+        <span style="color: #008800; font-weight: bold">else</span>
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;NO&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+    }
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+		</p>
+	</div>
+	<div id="2" class="even">
+		<p>
+			<h2>Problem 2: Dazzler and his Ego</h2>
+			<h3>Problem Statement</h3>
+As Munchy insulted Dazzler in his above question, Dazzler divided to take revenge on him. He gave Munchy this problem and asked him to solve. Help Munchy in solving this problem<br><br>
+You are given two strings A and B of equal length N. You can do the following operation any number of times.You can select any character from A and swap it with any character in B. Formally, Select any i(1<=i<=N) and j(1<=j<=N), You can swap Ai and Bj. Your task is to make both A and B equal, ie.. for any i(1<=i<=N) Ai=Bi. Check whether it is possible or not. If possible print "YES"(without quotes), else "NO"(without quotes)<br><br>
+			<h3>Input Format</h3>
+* First line will contain T, number of testcases. <br>
+* Then the testcases follow. The first line of each test case contains N. <br>
+* The second line of each test case contains A. <br>
+* The third line of each test case contains B.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=100 <br>
+* 1<=N<=100000<br><br>			
+			<h3>Output Format</h3>
+* print a single line for each test case, "YES"(without quotes) if it is possible or "NO"(without quotes) if it is not possible<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+5<br>
+ABCDE<br>
+ABCDE<br>
+5<br>
+ABCDE<br>
+FGHIJ<br><br>
+			<h3>Sample Output 0</h3>
+YES<br>
+NO<br><br>
+			<h3>Approach</h3>
+* We can make it possible if the count of each alphabet in both the strings is even. For Example, if A="ABCDE" and B="ABCDE", each characters occur twice, hence it is possible.<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius: 15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> _ <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    a<span style="color: #333333">=</span><span style="color: #007020">input</span>()
+    b<span style="color: #333333">=</span><span style="color: #007020">input</span>()
+    <span style="color: #888888">#count array keeps the count of each alphabet in both a and b</span>
+    count<span style="color: #333333">=</span>[<span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #0000DD; font-weight: bold">26</span>)]
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> a:
+        count[<span style="color: #007020">ord</span>(i)<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">65</span>]<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> b:
+        count[<span style="color: #007020">ord</span>(i)<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">65</span>]<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    flag<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #888888">#next iteration loop checks for any odd occurence of a character</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> count:
+        <span style="color: #008800; font-weight: bold">if</span>(i<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">!=</span><span style="color: #0000DD; font-weight: bold">0</span>):
+            flag<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>
+            <span style="color: #008800; font-weight: bold">break</span>
+    <span style="color: #008800; font-weight: bold">if</span>(flag<span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">0</span>):
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;NO&quot;</span>)
+    <span style="color: #008800; font-weight: bold">else</span>:
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;YES&quot;</span>)
+</pre></div>
+			<h3>Code in C++</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;iostream&gt;</span>
+<span style="color: #557799">#include &lt;vector&gt;</span>
+<span style="color: #557799">#include &lt;string&gt;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    <span style="color: #333399; font-weight: bold">int</span> t;
+    cin <span style="color: #333333">&gt;&gt;</span> t;
+    <span style="color: #008800; font-weight: bold">while</span>(t<span style="color: #333333">--</span>) {
+        <span style="color: #333399; font-weight: bold">int</span> n;
+        cin <span style="color: #333333">&gt;&gt;</span> n;
+        vector <span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span>a(<span style="color: #0000DD; font-weight: bold">26</span> , <span style="color: #0000DD; font-weight: bold">0</span>);
+        string s1 , s2;
+        cin <span style="color: #333333">&gt;&gt;</span> s1 <span style="color: #333333">&gt;&gt;</span> s2;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #008800; font-weight: bold">auto</span> item<span style="color: #333333">:</span> s1)
+            a[item <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">65</span>]<span style="color: #333333">++</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #008800; font-weight: bold">auto</span> item<span style="color: #333333">:</span> s2)
+            a[item <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">65</span>]<span style="color: #333333">++</span>;
+        <span style="color: #333399; font-weight: bold">bool</span> flag <span style="color: #333333">=</span> <span style="color: #007020">true</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">26</span>; i<span style="color: #333333">++</span>)
+            <span style="color: #008800; font-weight: bold">if</span>(a[i] <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">!=</span> <span style="color: #0000DD; font-weight: bold">0</span>) {
+                cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;NO&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+                flag <span style="color: #333333">=</span> <span style="color: #007020">false</span>;
+                <span style="color: #008800; font-weight: bold">break</span>;
+            }
+        <span style="color: #008800; font-weight: bold">if</span>(flag)
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;YES&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+    }
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+		</p>
+	</div>
+	<div id=3>
+		<p>
+			<h2>Problem 3: Munchy vs Dazzler</h2>
+			<h3>Problem Statement</h3>
+This time the fight between Munchy and Dazzler become more ferocious. So they decided to play this game. This time their friends Kiruba and BK15 joined them. Kiruba and Dazzler team up, Munchy and BK15 team up.<br><br>
+Initially, there will be an array A of N elements. N is always even. A contains only non-negative integers. Each player gets an alternate chance. The game starts with Munchy's Team chance, then Dazzler's Team and it continues. The game ends with Dazzler's play. The integer M and D denotes the scores of Munchy and Dazzler respectively. Initiall M and D will be zero. Each time Munchy picks an element, he will do any one of the following according to the condition:<br><br>
+    1.if A[i] is even make M = (A[i]*A[i])-M.<br><br>
+    2.if A[i] is odd then make M = floor((M+A[i])/2).<br><br>
+Each time Dazzler picks an element, he will do any one of the following according to the condition:<br><br>
+    1.if A[i] is even make D = (D+(3*A[i])).<br><br>
+	2.if A[i] is odd then make D = floor((D*A[i])/(D+A[i]+1)).<br><br>
+After picking all the elements, the game ends.<br>
+If D>M, print "DAZZLER and KIRUBA WILL WIN" (without quotes)<br>
+else if M>D, print "MUNCHY and BK15 WILL WIN" (without quotes),<br>
+else print "TIE" (without quotes).<br>
+Also print their scores<br><br>
+			<h3>Input Format</h3>
+* First line will contain T, number of testcases.Then the testcases follow.<br>
+* The first line of each test case contains N.<br>
+* The second line of each test case contains the array A.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=100000<br>
+* 2<=N<=100000<br>
+* 0<=A[i]<=100000<br>
+* Sum of N over all test cases does not exceed 100000<br><br>
+			<h3>Output Format</h3>
+* For each testcase print two lines.<br>
+* In the first line, print "DAZZLER and KIRUBA WILL WIN" (without quotes)if D>M, else print "MUNCHY and BK15 WILL WIN"(without quotes), else print "TIE" (without quotes)<br>
+* In the second line, print the score of Munchy's team and Dazzler's team respectively<br><br>
+			<h3>Sample Input 0</h3>
+3<br>
+4<br>
+1 2 3 4<br>
+4<br>
+11 0 11 0<br>
+6<br>
+0 0 0 0 0 0<br><br>
+			<h3>Sample Output 0</h3>
+DAZZLER and KIRUBA WILL WIN<br>
+1 18<br>
+MUNCHY and BK15 WILL WIN<br>
+8 0<br>
+TIE<br>
+0 0<br><br>
+			<h3>Explanation 0</h3>
+* Initially M and D will be Zero. The game starts with Munchy's team. They select the first element ie.. 1<br>
+* 1 is an odd number so do the second operation M=floor((M+A[i])/2), so after first move it remains the same as floor(1/2)=0<br>
+* Next, Dazzler's team pick the second element ie.. 2<br>
+* 2 is an even number so do the first operation D=D+(3*A[i]), so after the second move D will be equal to 6<br>
+* The game continues.. at the end M and D will be equal to 1 and 18 respectively. So Dazzler's team wins the game<br><br>
+			<h3>Approach</h3>
+- Follow the operations given in the question and calculate M and D.<br>
+- If M == D, then print TIE.<br>
+- If M > D, then print MUNCHY and BK15 WILL WIN.<br>
+- If M < D, then print DAZZLER and KIRUBA WILL WIN.<br>
+- In the next line print M and D respectively.<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+
+t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> k <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    arr<span style="color: #333333">=</span><span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+    d,m<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">0</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n):
+        <span style="color: #008800; font-weight: bold">if</span> i<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span>:
+            <span style="color: #008800; font-weight: bold">if</span> arr[i]<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span>:
+                d<span style="color: #333333">=</span>math<span style="color: #333333">.</span>floor((d<span style="color: #333333">*</span>arr[i])<span style="color: #333333">/</span>(d<span style="color: #333333">+</span>arr[i]<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>))
+            <span style="color: #008800; font-weight: bold">else</span>:
+                d<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">3</span><span style="color: #333333">*</span>arr[i]
+        <span style="color: #008800; font-weight: bold">else</span>:
+            <span style="color: #008800; font-weight: bold">if</span> arr[i]<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span>:
+                m<span style="color: #333333">=</span>math<span style="color: #333333">.</span>floor((arr[i]<span style="color: #333333">+</span>m)<span style="color: #333333">/</span><span style="color: #0000DD; font-weight: bold">2</span>)
+            <span style="color: #008800; font-weight: bold">else</span>:
+                m<span style="color: #333333">=</span>arr[i]<span style="color: #333333">*</span>arr[i]<span style="color: #333333">-</span>m
+    <span style="color: #008800; font-weight: bold">if</span> d<span style="color: #333333">&gt;</span>m:
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;DAZZLER and KIRUBA WILL WIN&quot;</span>)
+    <span style="color: #008800; font-weight: bold">elif</span> m<span style="color: #333333">&gt;</span>d:
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;MUNCHY and BK15 WILL WIN&quot;</span>)
+    <span style="color: #008800; font-weight: bold">else</span>:
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;TIE&quot;</span>)
+    <span style="color: #007020">print</span>(m,d)
+</pre></div>
+			<h3>Code in C++</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;iostream&gt;</span>
+<span style="color: #557799">#include &lt;vector&gt;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    <span style="color: #333399; font-weight: bold">int</span> t;
+    cin <span style="color: #333333">&gt;&gt;</span> t;
+    <span style="color: #008800; font-weight: bold">while</span>(t<span style="color: #333333">--</span>) {
+        <span style="color: #333399; font-weight: bold">int</span> n;
+        cin <span style="color: #333333">&gt;&gt;</span> n;
+        <span style="color: #333399; font-weight: bold">long</span> <span style="color: #333399; font-weight: bold">long</span> M <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        <span style="color: #333399; font-weight: bold">long</span> <span style="color: #333399; font-weight: bold">long</span> D <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>; i <span style="color: #333333">&lt;=</span> n; i<span style="color: #333333">++</span>) {
+            <span style="color: #333399; font-weight: bold">int</span> element;
+            cin <span style="color: #333333">&gt;&gt;</span> element;
+            <span style="color: #008800; font-weight: bold">if</span>(i <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>) {
+                <span style="color: #008800; font-weight: bold">if</span>(element <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>) {
+                    D <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">3</span> <span style="color: #333333">*</span> element <span style="color: #333333">+</span> D;
+                }
+                <span style="color: #008800; font-weight: bold">else</span> {
+                    D <span style="color: #333333">=</span> (D <span style="color: #333333">*</span> element) <span style="color: #333333">/</span> (D <span style="color: #333333">+</span> element <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>);
+                }
+            }
+            <span style="color: #008800; font-weight: bold">else</span> {
+                <span style="color: #008800; font-weight: bold">if</span>(element <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">0</span>) {
+                    M <span style="color: #333333">=</span> element <span style="color: #333333">*</span> element <span style="color: #333333">-</span> M;
+                }
+                <span style="color: #008800; font-weight: bold">else</span> {
+                    M <span style="color: #333333">=</span> (M <span style="color: #333333">+</span> element) <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>;
+                }
+            }
+        }
+        <span style="color: #008800; font-weight: bold">if</span>(D <span style="color: #333333">==</span> M) {
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;TIE&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+            cout <span style="color: #333333">&lt;&lt;</span> M <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot; &quot;</span> <span style="color: #333333">&lt;&lt;</span> D <span style="color: #333333">&lt;&lt;</span> endl;
+        }
+        <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span>(M <span style="color: #333333">&gt;</span> D) {
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;MUNCHY and BK15 WILL WIN&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+            cout <span style="color: #333333">&lt;&lt;</span> M <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot; &quot;</span> <span style="color: #333333">&lt;&lt;</span> D <span style="color: #333333">&lt;&lt;</span> endl;
+        }
+        <span style="color: #008800; font-weight: bold">else</span> {
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;DAZZLER and KIRUBA WILL WIN&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+            cout <span style="color: #333333">&lt;&lt;</span> M <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot; &quot;</span> <span style="color: #333333">&lt;&lt;</span> D <span style="color: #333333">&lt;&lt;</span> endl;
+        }
+    }
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+		</p>
+	</div>
+	<div id="4" class="even">
+		<p>
+			<h2>Problem 4: Munchy-Dazzler-Assemble</h2>
+			<h3>Problem Statement</h3>
+Munchy and Dazzler,after a fight finally decided to become good friends since they need to prepare for ICPC.<br><br>
+But to make that possible they have to build one palindrome each consisting of exactly x number of a's and y number of b's.<br><br>
+Each one has to build a palindrome different from the other one satisfying the above conditions.<br><br>
+If they cannot build two distinct palindromes then print -1.<br><br>
+If there are multiple solutions possible print the two strings in any order.<br><br>
+Our checker solution will validate it(no harm huh?).<br><br>
+			<h3>Input Format</h3>
+* First line consists of x - the number of a's<br>
+* Second line consists of y - the number of b's<br><br>
+			<h3>Constraints</h3>
+* 1<=x<=10000000<br>
+* 1<=y<=10000000<br><br>			
+			<h3>Output Format</h3>
+* Print the two distinct palindromes in any order or -1 if its not possible.<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+2<br><br>
+			<h3>Sample Output 0</h3>
+abba<br>
+baab<br><br>
+			<h3>Approach</h3>
+	There are many approaches to solve this problem. Let me explain my following approach.<br>
+    First of all a palindrome must contain all letters an even number of times, except the middle letter(if length of palindrome is odd, this is ignored in even length).<br><br>
+
+    We deal with only two characters here **a** and **b**.Let **x** and **y** be number of **a's** and **b's** respectively. If x and y are odd then its impossible to do so, since both letters are occuring odd number of times and the total length of the palindrome will be even.<br><br>
+
+    If either x or y is 1,then the position of one character is fixed, so we can't obtain two distinct palindromes.<br><br>
+
+    Else it's always possible to obtain a valid solution.<br><br>
+
+    If x and y both are even, then we can simply split into three components,<br>	
+    For example if x is 4 and y is 6<br>
+    We can split it into 'aa' and 'bbbbbb' and 'aa'.<br>
+    Similarly we can split into 'bbb' and 'aaaa' and 'bbb'.<br>
+    The proof is quite simple and is left upto you.<br><br>
+
+    If x is even and y is odd then we can split into five components,<br>
+    For example if x is 4 and y is 5<br>
+    We can split into 'aa' and 'bbbbb' and 'aa'.<br>
+    Then the next split can be 'bb' and 'aa' and 'b' and 'aa' and 'bb'.<br>
+    Notice 'b' takes the middle character since y is odd.<br>
+    Similarly you can do for the other case too.<br><br>			
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">math</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>    
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">collections</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>     
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">random</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>     
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">bisect</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>     
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">sys</span>     
+<span style="color: #007020">input</span><span style="color: #333333">=</span>sys<span style="color: #333333">.</span>stdin<span style="color: #333333">.</span>readline 
+t<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span> 
+<span style="color: #008800; font-weight: bold">while</span>(t): 
+    t<span style="color: #333333">-=</span><span style="color: #0000DD; font-weight: bold">1</span> 
+    x<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    y<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    <span style="color: #008800; font-weight: bold">if</span>((x<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #000000; font-weight: bold">and</span> y<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span>) <span style="color: #000000; font-weight: bold">or</span> (x<span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #000000; font-weight: bold">or</span> y<span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">1</span>)):
+        <span style="color: #007020">print</span>(<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)
+        exit(<span style="color: #0000DD; font-weight: bold">0</span>)
+    <span style="color: #008800; font-weight: bold">elif</span>(x<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #000000; font-weight: bold">and</span> y<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">0</span>):
+        r1<span style="color: #333333">=</span>(<span style="background-color: #fff0f0">&#39;a&#39;</span><span style="color: #333333">*</span>(x<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;b&#39;</span><span style="color: #333333">*</span>y)<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;a&#39;</span><span style="color: #333333">*</span>(x<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))
+        r2<span style="color: #333333">=</span>(<span style="background-color: #fff0f0">&#39;b&#39;</span><span style="color: #333333">*</span>(y<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;a&#39;</span><span style="color: #333333">*</span>x)<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;b&#39;</span><span style="color: #333333">*</span>(y<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))
+    <span style="color: #008800; font-weight: bold">elif</span>(x<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span>):
+        r1<span style="color: #333333">=</span>(<span style="background-color: #fff0f0">&#39;a&#39;</span><span style="color: #333333">*</span>(x<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;b&#39;</span><span style="color: #333333">*</span>(y<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;a&#39;</span>)<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;b&#39;</span><span style="color: #333333">*</span>(y<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;a&#39;</span><span style="color: #333333">*</span>(x<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))
+        r2<span style="color: #333333">=</span>(<span style="background-color: #fff0f0">&#39;b&#39;</span><span style="color: #333333">*</span>(y<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;a&#39;</span><span style="color: #333333">*</span>x)<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;b&#39;</span><span style="color: #333333">*</span>(y<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))
+    <span style="color: #008800; font-weight: bold">else</span>:
+        r1<span style="color: #333333">=</span>(<span style="background-color: #fff0f0">&#39;b&#39;</span><span style="color: #333333">*</span>(y<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;a&#39;</span><span style="color: #333333">*</span>(x<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;b&#39;</span>)<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;a&#39;</span><span style="color: #333333">*</span>(x<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;b&#39;</span><span style="color: #333333">*</span>(y<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))
+        r2<span style="color: #333333">=</span>(<span style="background-color: #fff0f0">&#39;a&#39;</span><span style="color: #333333">*</span>(x<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;b&#39;</span><span style="color: #333333">*</span>y)<span style="color: #333333">+</span>(<span style="background-color: #fff0f0">&#39;a&#39;</span><span style="color: #333333">*</span>(x<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>))
+    <span style="color: #007020">print</span>(r1)
+    <span style="color: #007020">print</span>(r2)
+</pre></div>
+			<h3>Code in C++</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;iostream&gt;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    <span style="color: #333399; font-weight: bold">int</span> x , y;
+    cin <span style="color: #333333">&gt;&gt;</span> x <span style="color: #333333">&gt;&gt;</span> y;
+    <span style="color: #008800; font-weight: bold">if</span>((x <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">&amp;&amp;</span> y <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>) <span style="color: #333333">||</span> (x <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #333333">||</span> y <span style="color: #333333">==</span> <span style="color: #0000DD; font-weight: bold">1</span>))
+        cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;-1&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+    <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span>(x <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">||</span> y <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>) {
+        <span style="color: #008800; font-weight: bold">if</span>(x <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>) {
+            string s1(<span style="background-color: #fff0f0">&quot;&quot;</span>);
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> y <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+                s1 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;b&quot;</span>;
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> x; i<span style="color: #333333">++</span>)
+                s1 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;a&quot;</span>;
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> y <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+                s1 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;b&quot;</span>;
+            cout <span style="color: #333333">&lt;&lt;</span> s1 <span style="color: #333333">&lt;&lt;</span> endl;
+            string s2(<span style="background-color: #fff0f0">&quot;&quot;</span>);
+            x <span style="color: #333333">-=</span> <span style="color: #0000DD; font-weight: bold">2</span>;
+            s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;a&quot;</span>;
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> y <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+                s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;b&quot;</span>;
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> x; i<span style="color: #333333">++</span>)
+                s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;a&quot;</span>;
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> y <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+                s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;b&quot;</span>;
+            s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;a&quot;</span>;
+            cout <span style="color: #333333">&lt;&lt;</span> s2 <span style="color: #333333">&lt;&lt;</span> endl;
+        }
+        <span style="color: #008800; font-weight: bold">else</span> {
+            string s1(<span style="background-color: #fff0f0">&quot;&quot;</span>);
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> x <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+                s1 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;a&quot;</span>;
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> y; i<span style="color: #333333">++</span>)
+                s1 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;b&quot;</span>;
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> x <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+                s1 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;a&quot;</span>;
+            cout <span style="color: #333333">&lt;&lt;</span> s1 <span style="color: #333333">&lt;&lt;</span> endl;
+            string s2(<span style="background-color: #fff0f0">&quot;&quot;</span>);
+            y <span style="color: #333333">-=</span> <span style="color: #0000DD; font-weight: bold">2</span>;
+            s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;b&quot;</span>;
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> x <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+                s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;a&quot;</span>;
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> y; i<span style="color: #333333">++</span>)
+                s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;b&quot;</span>;
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> x <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+                s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;a&quot;</span>;
+            s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;b&quot;</span>;
+            cout <span style="color: #333333">&lt;&lt;</span> s2 <span style="color: #333333">&lt;&lt;</span> endl;
+        }
+    }
+    <span style="color: #008800; font-weight: bold">else</span> {
+        string s1(<span style="background-color: #fff0f0">&quot;&quot;</span>);
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> y <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+            s1 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;b&quot;</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> x; i<span style="color: #333333">++</span>)
+            s1 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;a&quot;</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> y <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+            s1 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;b&quot;</span>;
+        cout <span style="color: #333333">&lt;&lt;</span> s1 <span style="color: #333333">&lt;&lt;</span> endl;
+        string s2(<span style="background-color: #fff0f0">&quot;&quot;</span>);
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> x <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+            s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;a&quot;</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> y; i<span style="color: #333333">++</span>)
+            s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;b&quot;</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> x <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; i<span style="color: #333333">++</span>)
+            s2 <span style="color: #333333">+=</span> <span style="background-color: #fff0f0">&quot;a&quot;</span>;
+        cout <span style="color: #333333">&lt;&lt;</span> s2 <span style="color: #333333">&lt;&lt;</span> endl;
+    }
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+		</p>
+	</div>
+</main>
+<footer>
+	<p>Instagram : <a href="https://www.instagram.com/randomcoders/" target="_blank">@randomcoders</a></p>
+	<p>email id  : randomcoders4@gmail.com</p>
+	<p>HackerRank: <a href="https://www.hackerrank.com/randomcoders4" target="_blank">randomcoders4</a></p>
+</footer>
+</body>
+</html>

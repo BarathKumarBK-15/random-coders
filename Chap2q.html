@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RandomCoders:Chapter-2</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/jpeg" 
+	href="images/icon.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/rc.css"/>
+	<script type="text/javascript" src="js/rc.js"></script>
+</head>
+<body>
+<header>
+	<nav>
+		<a href="index.html">Home</a>
+		<a href="ps.html">Practice</a>
+		<a href="q.html">Contests</a>
+		<a href="Solutions.html">Solutions</a>
+		<a href="aboutus.html">About Us</a>
+	</nav>
+</header>
+<main>
+	<br><br>
+	<nav>
+		<button onclick="prob(1)">Problem:1 Hands on Clock!</button>
+		<button onclick="prob(2)">Problem:2 Growth and Fall</button>
+		<button onclick="prob(3)">Problem:3 Kiruba's Favourite Number</button>
+		<button onclick="prob(4)">Problem:4 Rank of a Word</button>
+	</nav>
+	<div id="1">
+		<h2>Problem 1: Hands on Clock!</h2>
+		<p>
+			<h3>Problem Statement</h3>
+			You are given a clock that follows the twelve hour format.<br><br>Given time from 00:00 to 23:00, find the first time at which the hour hand and the minute hand overlap.
+			<br><br>
+			<h3>Input Format</h3>
+* First line contains a single integer t, representing the number of test cases.<br>
+* The next t lines, contain a single integer time, representing time from 0 hours to 23 hours<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 24<br>
+* 0 <= time <= 23<br><br>
+			<h3>Output Format</h3>
+* For each test case print a single line representing the time of overlap in the format hours:minutes<br>
+* Hours must be in the range 1 to 12<br>
+* Minutes must be in the range 0 to 59<br>
+* Note: In case, time is 09:03 print 9:3. Similarly if time is 12:00 print 12:0<br><br>
+			<h3>Sample Input 0</h3>
+3<br>
+23<br>
+6<br>
+12<br><br>
+			<h3>Sample Output 0</h3>
+12:0<br>
+6:32<br>
+12:0<br><br>
+			<h3>Explanation 0</h3>
+* Case 1: 23 hours represent 11 o clock in the 12 hours format.Thus the hand meet each other only after 60 minutes. Therefore output is 12:0<br>
+* Case 2: 6 hours represents 6 o clock in the 12 hours format. In such a situation the clock meets after 32 minutes and 30 seconds. Therefore ouput is 6:32<br>
+* Case 3: In this case the hands are initially at same same position. So no changes<br><br>
+		</p>
+	</div>
+	<div id="2" class="even">
+		<p>
+			<h2>Problem 2: Growth and Fall</h2>
+			<h3>Problem Statement</h3>
+Rachit plants a seed of a tree and expects it to reach a particular height h.The tree grows by a height, g units every week. Kiruba a naughty kid cuts the tree by f units by the end of each week.<br><br>
+Find the week on which the tree attains the height, h<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer t, representing the numebr of test cases<br>
+* The next t lines contains three space seperated integers in the format "h g f", where,h is height to be reached, g is growth and f is the decrease in height<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 1000<br>
+* 1 <= h <= 10^8<br>
+* 1 <= g <= 10^4<br>
+* 0 <= f <= 10^2<br>
+* f < g (always)<br><br>			
+			<h3>Output Format</h3>
+* For each test case print a single integer representing the week on which the tree attains the height, h<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+30 4 2<br>
+45 3 0<br><br>
+			<h3>Sample Output 0</h3>
+14<br>
+15<br><br>
+			<h3>Explanation</h3>
+* Case 1: On the first week the tree grows 4 units and Kiruba cuts it by 2 units, therefore height becomes 2 units. On the second week the tree grows to a heigth of (4+2)=6 units and Kiruba cuts it to 4 units. Thus the tree will reach a height of 26 units after 13 weeks and on the 14th week the tree grows to a height of 30 units (before Kiruba cuts it)<br>
+* Case 2: The tree grows 3 units each week but Kiruba does not cuts it. Thus it reaches a height of 45 units in 15 weeks<br><br>
+		</p>
+	</div>
+	<div id=3>
+		<p>
+			<h2>Problem 3: Kiruba's Favourite Number</h2>
+			<h3>Problem Statement</h3>
+Kiruba finds a set of numbers to be his favourite if they satisfy the following condition<br><br>
+* Any given number is represented in binary, example binary(10) => 1010<br>
+* When the binary representation is partitioned into two equal halves,then the two halves must be equal. Example 1010 => 10 | 10 .Thus 10 is one of his favourite number<br><br>
+Given an array A of length N. Find the number of favourite numbers in the given array.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer,t representing the number of test cases<br>
+* Each test case contains two lines<br>
+* The first line of each test case contains a single integer,N representing the length of the array<br>
+* The second line of each test case contains N space seperated integers<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 100<br>
+* 1 <= N <= 45<br>
+* 1 <= A[i] <= 1000<br><br>
+			<h3>Output Format</h3>
+* For each test case print a single integer that represents the number of Kiruba's Favourite numbers in the array<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+4<br>
+1 5 15 20<br>
+1<br>
+6<br><br>
+			<h3>Sample Output 0</h3>
+2<br>
+0<br><br>
+			<h3>Explanation 0</h3>
+* Case 1:<br>
+* binary(1) => 1 => (01) => 0 | 1 .Therefore its not a favourite number.<br>
+* binary(5) => 101 => (0101) => 01 | 01 .Therefore its a favourite number.<br>
+* binary(15) => 1111 => (1111) => 11 | 11 .Therefore its a favourite number.<br>
+* binary(20) => 10100 => (010100) => 010 | 100 .Therefore its not a favourite number.<br>
+* Therefore there are 2 favourite number in the array.<br><br>
+* Case 2: There are no such favourite numbers in the array<br>
+		</p>
+	</div>
+	<div id="4" class="even">
+		<p>
+			<h2>Problem 4: Rank of a Word</h2>
+			<h3>Problem Statement</h3>
+Given, a set of distinct lower case English alphabets, all sorted, various words are formed by permutating the given set of alphabets( each word must contain all the alphabets given ) and are arranged in lexicographic order. These words are ranked starting from 1.<br><br>Find the word for a given rank. If the given rank is greater than the number of available number of words, print -1<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer t,representing the number of test cases<br>
+* First line of each test case contains a single integer N,representing the number of alphabets<br>
+* The second line ot each test case contains N space seperated lower case English alphabets<br>
+* The third and the last line of each test case contains a single integer R, representing the rank of the word to be found.<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 100<br>
+* 1 <= N <= 10<br>
+* 1 <= R <= 5 x 10^6<br>
+* Each character given is always a lower case English alphabet<br><br>			
+			<h3>Output Format</h3>
+* For each test case print the word in the particular rank<br>
+* If no word exist for a particular rank, print '-1'<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+5<br>
+a c d f g<br>
+48<br>
+3<br>
+x y z<br>
+8<br><br>
+			<h3>Sample Output 0</h3>
+cgfda<br>
+-1<br><br>
+			<h3>Explanation</h3>
+* Case 1: The words formed by permutating letters 'a' 'c' 'd' 'f' and 'g' are ('acdfg', 'acdgf', 'acfdg', 'acfgd', .... , 'gfdac', 'gfdca'). In the following set of words, the rank 48 is taken by the word 'cgfda'.<br>
+* Case 2: The total number of words formed by permutating 'x' 'y' and 'z' are 6. Therefore no word exist at rank 8.<br><br>
+		</p>
+	</div>
+	<button onclick="gotochap(2)">View Solutions</button>
+</main>
+<footer>
+	<p>Instagram : <a href="https://www.instagram.com/randomcoders/" target="_blank">@randomcoders</a></p>
+	<p>email id  : randomcoders4@gmail.com</p>
+	<p>HackerRank: <a href="https://www.hackerrank.com/randomcoders4" target="_blank">randomcoders4</a></p>
+</footer>
+</body>
+</html>

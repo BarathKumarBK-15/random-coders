@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PracticeSeries:Chapter-4</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/jpeg" 
+	href="images/icon.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/rc.css"/>
+	<script type="text/javascript" src="js/rc.js"></script>
+</head>
+<body>
+<header>
+	<nav>
+		<a href="index.html">Home</a>
+		<a href="ps.html">Practice</a>
+		<a href="q.html">Contests</a>
+		<a href="Solutions.html">Solutions</a>
+		<a href="aboutus.html">About Us</a>
+	</nav>
+</header>
+<main>
+	<br><br>
+	<nav>
+		<button onclick="prob(1)">Problem:1 Munchy's Sizzling Cakewalk!</button>
+		<button onclick="prob(2)">Problem:2 Munchy's Perfect Palindromes</button>
+		<button onclick="prob(3)">Problem:3 Dazzler and his Even Pairs for Munchy</button>
+		<button onclick="prob(4)">Problem:4 Dazzler's Munchful Arrays</button>
+        <button onclick="prob(5)">Problem:5 Munchy's Dazzling Bits!</button>
+	</nav>
+	<div id="1">
+		<h2>Problem 1: Munchy's Sizzling Cakewalk!</h2>
+		<p>
+			<h3>Problem Statement</h3>
+Before the storyline continues,Munchy as usual left a strong-stronger-strongest question for the people.<br>
+Munchy has N candies and he needs to divide it among M girls.Of course the distribution must satisfy the following conditions :<br>
+1.Each girl must receive an even number of candies.<br>
+2.Each girl must receive at least one candy.<br>
+Find whether it's possible or not.<br>
+NOTE THAT YOU DON'T HAVE TO NECESSARILY GIVE ALL CANDIES, YOU CAN KEEP SOME OF THEM.<br><br>
+			<h3>Input Format</h3>
+* The first line consists of T denoting the number of testcases.<br>
+* Each line conatains 2 space-separated integers N and M.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=100000<br>
+* 1<=N<=10^18<br>
+* 1<=M<=10^18<br><br>
+			<h3>Output Format</h3>
+* Print YES ,if it's possible or else NO.<br><br>
+			<h3>Sample Input 0</h3>
+1<br>
+6 2<br><br>
+			<h3>Sample Output 0</h3>
+YES<br><br>
+			<h3>Explanation 0</h3>
+* 1st girl can receive 4 candies and 2nd girl can receive 2 candies.<br><br>
+			<h3>Approach</h3>
+- It is sufficient to give 2 candies to each girl.<br>
+- So check if 2*M is within N or not.<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">while</span>(t):
+    t<span style="color: #333333">-=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    n,m<span style="color: #333333">=</span><span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split())
+    s<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;NO&#39;</span>
+    <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">*</span>m<span style="color: #333333">&lt;=</span>n):
+        s<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;YES&#39;</span>
+    <span style="color: #007020">print</span>(s)
+</pre></div>
+</p>
+	</div>
+	<div id="2" class="even">
+		<p>
+			<h2>Problem 2: Munchy's Perfect Palindromes</h2>
+			<h3>Problem Statement</h3>
+Munchy was expecting Dazzler to survive his traps. He didn't want anymore fight with him and decided to seek peace and become good friends.So he framed a perfect friendly problem for Dazzler.Help him solve it.<br><br>
+You are given a binary string S.You can do the following operation at most K (possibly zero)times:<br><br>
+1.If the bit is '0', change it to '1'.<br>
+2.Else if the bit is '1', change it to '0'.<br><br>
+Find out whether it's possible to make a palindrome by performing at most K operations.<br><br>
+			<h3>Input Format</h3>
+* The first line consists of T denoting the number of testcases.<br>
+* Second line consists of 2 space-separated integers**N** and K denoting the length of the binary string and the limit of the operations,respectively.<br>
+* Third line consists of S, the binary string.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=100<br>
+* 1<=|S|<=100000<br>
+* 1<=K<=|S|<br><br>			
+			<h3>Output Format</h3>
+* Print a single line for each testcase, YES, if it's possible or else NO.<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+3 1<br>
+001<br>
+2 0<br>
+01<br><br>
+			<h3>Sample Output 0</h3>
+YES<br>
+NO<br><br>
+			<h3>Explanation</h3>
+1.We can flip the 1st bit to '1' using one operation and the string becomes 101,which is a palindrome.<br>
+2.In this case it's impossible to make it a palindrome using 0 operations.<br><br>
+			<h3>Approach</h3>
+Divide the string into equal halves , ignore the middle element if it's of odd length.<br>
+Let i represent the first ith element in the first half.<br>
+Let j represent the first jth element from the last in the second half.<br>
+Now for a palindrome ith and jth character must be same.<br>
+If not just flip any one bit that's enough.<br>
+Continue for the remaining N//2 characters.<br>
+If the total number of flips required is more than K,then its not possible else its possible.<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">while</span>(t):
+    t<span style="color: #333333">-=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    n,k<span style="color: #333333">=</span><span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split())
+    s<span style="color: #333333">=</span><span style="color: #007020">input</span>()<span style="color: #333333">.</span>rstrip(<span style="background-color: #fff0f0">&#39;</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&#39;</span>)
+    co<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>
+    r<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;YES&#39;</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>):
+        <span style="color: #008800; font-weight: bold">if</span>(s[i]<span style="color: #333333">!=</span>s[n<span style="color: #333333">-</span>i<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]):
+            co<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #008800; font-weight: bold">if</span>(co<span style="color: #333333">&gt;</span>k):
+        r<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;NO&#39;</span>
+    <span style="color: #007020">print</span>(r)
+</pre></div>
+</p>
+	</div>
+	<div id=3>
+		<p>
+			<h2>Problem 3: Dazzler and his Even Pairs for Munchy</h2>
+			<h3>Problem Statement</h3>
+As last time it was easy to find the odd pairs.. Dazzler and Munchy solved the problem easily. But this time it is'nt the case. They have to find the number of even pairs. Help them to solve the problem.<br><br>
+Read the problem carefully and also the note.<br>
+You are given with an array A of length N consisting of non negative integers. You have to count the number of pairs such that a[i]+a[j] is an even integer, where 1<=i<=N, 1<=j<=N.<br><br>
+Note : i should not be equal to j. If you are a C++ user , use long long and not int.<br><br>
+			<h3>Input Format</h3>
+* The first line contains T which indicates the number of testcases.<br>
+* The first line of each test case contains N.<br>
+* The second line of each test case contains the array of length N<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=1000<br>
+* 2<=N<=1000000<br>
+* 0<=A [ i ]<=10000000<br>
+* The sum of N over all cases does not exceed 1000000<br><br>
+			<h3>Output Format</h3>
+* For each test case print a single line indicating the number of pairs<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+2<br>
+1 0<br>
+2<br>
+3 3<br><br>
+			<h3>Sample Output 0</h3>
+0<br>
+2<br><br>
+			<h3>Explanation 0</h3>
+* In the first testcase its not possible to form an even pair.<br>
+* In the second testcase a[ 0 ]+a[ 1 ] = 6 and a [ 1 ]+a [ 0 ] = 6, so its 2.<br><br>
+			<h3>Approach</h3>
+Number of even pairs will be odd*(odd-1) + even*(even-1), where odd and even are the count of odd and even integers respectively<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> _ <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    a<span style="color: #333333">=</span><span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+    even,odd<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">0</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> a:
+        <span style="color: #008800; font-weight: bold">if</span>(i<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">0</span>):
+            even<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span>
+        <span style="color: #008800; font-weight: bold">else</span>:
+            odd<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #007020">print</span>(even<span style="color: #333333">*</span>(even<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">+</span>odd<span style="color: #333333">*</span>(odd<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>))
+</pre></div>
+</p>
+</div>
+	<div id="4" class="even">
+		<p>
+			<h2>Problem 4: Dazzler's Munchful Array</h2>
+			<h3>Problem Statement</h3>
+Dazzler wants to gift an array to Munchy. Before that he asks Munchy what type of array you need. Munchy asked Dazzler to make his array Munchful<br><br>
+An array is called Munchful if all its elements are divisble by k.<br><br>
+You are given an array A of N elements. You can make any one of the following operation any number of times<br><br>
+* Make a[ i ] as a[ i ] + 1<br>
+* Make a[ i ] as a[ i ] - 1<br><br>
+Each first operation costs F dollars and each second operation costs S dollars.<br><br>
+You have to make all the elements of the array divisble by k. If B is the array after required operations are done, then b [ i ] % k should be zero 1<=i<=N.<br><br>
+Find minimum how many dollars are required to make the array munchful.<br><br>
+Since the answer may be huge, compute it modulo 10^9+7<br><br>
+			<h3>Input Format</h3>
+* The First line contains T, number of Testcases.<br>
+* The First line of each Test case contains four integers indicating N,K,F,S respectively.<br>
+* The second line of each Test case containing N spaced integers containing the array A.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=100<br>
+* 1<=N<=100000<br>
+* 0<=A [ i ]<=100000<br>
+* 1<=k<=100000<br>
+* 0<=F<=1000<br>
+* 0<=S<=1000<br>
+* Sum of N over all testcases does not exceed 5.10^5<br><br>			
+			<h3>Output Format</h3>
+* For each test case, print a single line that contains minimum dollars required to make the array munchful modulo 10^9+7<br><br>
+			<h3>Sample Input 0</h3>
+1<br>
+3 2 1 1<br>
+1 1 1<br><br>
+			<h3>Sample Output 0</h3>
+3<br><br>
+			<h3>Approach</h3>
+- for each element to make it divisble by k the minimum cost must be min((a[i]%k)*s,(k-a[i]%k)*f) ,or each 1<=i<=N<br><br>	
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> _ <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    n,k,f,s<span style="color: #333333">=</span><span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split())
+    a<span style="color: #333333">=</span><span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+    mod<span style="color: #333333">=</span>[<span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n)]
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n):
+        mod[i]<span style="color: #333333">=</span>a[i]<span style="color: #333333">%</span>k
+    ans<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> mod:
+        gpay<span style="color: #333333">=</span>k<span style="color: #333333">-</span>i
+        ans<span style="color: #333333">=</span>(ans<span style="color: #333333">+</span><span style="color: #007020">min</span>(gpay<span style="color: #333333">*</span>f,i<span style="color: #333333">*</span>s))<span style="color: #333333">%</span>(<span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">**</span><span style="color: #0000DD; font-weight: bold">9</span><span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">7</span>)
+    <span style="color: #007020">print</span>(ans)
+</pre></div>
+			<h3>Code in C++</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include&lt;iostream&gt;</span>
+<span style="color: #557799">#define mod 1000000007</span>
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>()
+{
+    <span style="color: #333399; font-weight: bold">int</span> t;
+    cin<span style="color: #333333">&gt;&gt;</span>t;
+    <span style="color: #008800; font-weight: bold">while</span>(t<span style="color: #333333">--</span>)
+    {
+        <span style="color: #333399; font-weight: bold">int</span> n,k,f,s,sum<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>;
+        cin<span style="color: #333333">&gt;&gt;</span>n<span style="color: #333333">&gt;&gt;</span>k<span style="color: #333333">&gt;&gt;</span>f<span style="color: #333333">&gt;&gt;</span>s;
+        <span style="color: #008800; font-weight: bold">while</span>(n<span style="color: #333333">--</span>)
+        {
+            <span style="color: #333399; font-weight: bold">int</span> num;
+            cin<span style="color: #333333">&gt;&gt;</span>num;
+            <span style="color: #008800; font-weight: bold">if</span>(num<span style="color: #333333">%</span>k<span style="color: #333333">!=</span><span style="color: #0000DD; font-weight: bold">0</span>)
+            {
+                <span style="color: #333399; font-weight: bold">int</span> x<span style="color: #333333">=</span>num<span style="color: #333333">-</span>(num<span style="color: #333333">/</span>k)<span style="color: #333333">*</span>k;
+                <span style="color: #333399; font-weight: bold">int</span> y<span style="color: #333333">=</span>(num<span style="color: #333333">/</span>k<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>)<span style="color: #333333">*</span>k<span style="color: #333333">-</span>num;
+                sum<span style="color: #333333">=</span>(sum<span style="color: #333333">+</span>min(y<span style="color: #333333">*</span>f,x<span style="color: #333333">*</span>s))<span style="color: #333333">%</span>mod;
+            }
+        }
+        cout<span style="color: #333333">&lt;&lt;</span>sum<span style="color: #333333">&lt;&lt;</span>endl;
+    }
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+</p>
+	</div>
+    <div id="5">
+        <p>
+            <h2>Problem 5: Munchy's Dazzling Bits!</h2>
+            <h3>Problem Statement</h3>
+Munchy is bored of the mechanical life and decided to do something interesting rather than attending classes.He and Dazzler decided to improve their programming skills.<br><br>
+Then,one fine day there came a secret mail to them.When Munchy opened it , it wasn't surprising for him since it was a RANDOM challenge sent to him by someone.<br><br>
+He was curious and wanted to solve the challenge,but couldn't.And he saw the mail was sent by someone named Lukaku.Who is Lukaku? <br>What happened in Munchy's and Dazzler's past life? Before they can answer these..Help them solve this!<br><br>
+You are given an array of N elements. Let's define a function F over two numbers A and B as follows:<br><br>
+1.Do OR operation between A and B and let the resultant be R(in decimal representation).<br><br>
+Now find the sum of F(A,B) where (A,B) are the possible unordered pairs from the given array elements modulo 10^9+7.<br><br>
+            <h3>Input Format</h3>
+* The first line consists of T denoting the number of testcases.<br>
+* The second line contains N denoting the number of elements in the array.<br>
+* The third line contains N space-separated integers of the array.<br><br>
+            <h3>Constraints</h3>
+* 1<=T<=10<br>
+* 1<=N<=100000<br>
+* 0<=Ai<=10^9<br><br>           
+            <h3>Output Format</h3>
+* Print the required sum modulo 10^9+7.<br><br>
+            <h3>Sample Input 0</h3>
+1<br>
+3<br>
+1 2 3<br><br>
+            <h3>Sample Output 0</h3>
+9<br><br>
+            <h3>Explanation 0</h3>
+* F(1,2)=3 F(1,3)=3 F(2,3)=3 Hence total sum would be 3+3+3=9<br><br>
+            <h3>Approach</h3>
+- There will be at maximum 30 bits since maximum value can be 10^9.So maintain a bit array of size 30.<br>
+- 0th position means 2^29 is included in binay representation<br>
+- 29th position means 2^0 is included in binary representation.<br>
+- For each element if ith bit is set then increment the ith position of bit array.<br>
+- Finally let's say we for ith position we have **y** number of ones .We can choose<br>
+- n*(n-1)/2 pairs for ith bit. Out of them we only need one bit at least to be set, so lets find out how many pairs can be taken such that (0,0) bit is satisfied.<br>
+- There will be N-y number of zeroes and let it be 'x'. And x*(x-1)/2 pairs can be taken where (0,0) pairs are satisfied.<br>
+- Hence subtract it from total pairs and multiply it with its 2 power.<br>
+- Do this for each bit position.<br>
+- Dont forget to take modulo!!!<br><br>            
+            <h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">while</span>(t):
+    t<span style="color: #333333">-=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    p<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1000000007</span>
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    a<span style="color: #333333">=</span><span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+    b<span style="color: #333333">=</span>[<span style="color: #0000DD; font-weight: bold">0</span>]<span style="color: #333333">*</span><span style="color: #0000DD; font-weight: bold">30</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> a:
+        z<span style="color: #333333">=</span><span style="color: #007020">bin</span>(i)[<span style="color: #0000DD; font-weight: bold">2</span>:]
+        z<span style="color: #333333">=</span>z<span style="color: #333333">.</span>zfill(<span style="color: #0000DD; font-weight: bold">30</span>)
+        <span style="color: #008800; font-weight: bold">for</span> j <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #0000DD; font-weight: bold">30</span>):
+            <span style="color: #008800; font-weight: bold">if</span>(z[j]<span style="color: #333333">==</span><span style="background-color: #fff0f0">&#39;1&#39;</span>):
+                b[j]<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span>
+        r<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>
+    <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #0000DD; font-weight: bold">30</span>):
+        y<span style="color: #333333">=</span>n<span style="color: #333333">-</span>b[i]
+        re<span style="color: #333333">=</span>((n<span style="color: #333333">*</span>(n<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>))<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>)<span style="color: #333333">-</span>((y<span style="color: #333333">*</span>(y<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>))<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>)
+        r<span style="color: #333333">+=</span>re<span style="color: #333333">*</span>(<span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">&lt;&lt;</span>(<span style="color: #0000DD; font-weight: bold">30</span><span style="color: #333333">-</span>i<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>))
+        r<span style="color: #333333">=</span>r<span style="color: #333333">%</span>p
+    <span style="color: #007020">print</span>(r)
+</pre></div>
+</p>
+    </div>
+</main>
+<footer>
+	<p>Instagram : <a href="https://www.instagram.com/randomcoders/" target="_blank">@randomcoders</a></p>
+	<p>email id  : randomcoders4@gmail.com</p>
+	<p>HackerRank: <a href="https://www.hackerrank.com/randomcoders4" target="_blank">randomcoders4</a></p>
+</footer>
+</body>
+</html>

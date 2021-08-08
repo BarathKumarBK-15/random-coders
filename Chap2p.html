@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PracticeSeries:Chapter-2</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/jpeg" 
+	href="images/icon.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/rc.css"/>
+	<script type="text/javascript" src="js/rc.js"></script>
+</head>
+<body>
+<header>
+	<nav>
+		<a href="index.html">Home</a>
+		<a href="ps.html">Practice</a>
+		<a href="q.html">Contests</a>
+		<a href="Solutions.html">Solutions</a>
+		<a href="aboutus.html">About Us</a>
+	</nav>
+</header>
+<main>
+	<br><br>
+	<nav>
+		<button onclick="prob(1)">Problem:1 Munchy's Dazzling Cakewalk</button>
+		<button onclick="prob(2)">Problem:2 Dazzler the Puzzler</button>
+		<button onclick="prob(3)">Problem:3 Munchy and Dazzler's New Girlfriend</button>
+		<button onclick="prob(4)">Problem:4 Dazzler's String Bits</button>
+        <button onclick="prob(5)">Problem:5 Munchy and The Trap(s)</button>
+	</nav>
+	<div id="1">
+		<h2>Problem 1: Munchy's Dazzling Cakewalk</h2>
+		<p>
+			<h3>Problem Statement</h3>
+Before the storyline continues, Munchy left an easy question for the people.<br><br>
+Dazzler and Munchy , both has to choose an integer between 1 and N, such that the sum of the chosen integers is exactly N.<br><br>
+How many possible ways are there such that the sum can be exactly N?<br><br>
+			<h3>Input Format</h3>
+* The first line contains T denoting the number of testcases.<br>
+* The second line contains one integer N.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=100<br>
+* 2<=N<=100000<br><br>
+			<h3>Output Format</h3>
+* Print one single integer denoting the total number of required ways.<br><br>
+			<h3>Sample Input 0</h3>
+3<br>
+2<br>
+3<br>
+100000<br><br>
+			<h3>Sample Output 0</h3>
+1<br>
+2<br>
+99999<br><br>
+			<h3>Explanation 0</h3>
+* In the first testcase, both can choose 1 and 1 and it is the only way to sum up 2.<br>
+* In the second testcase , the 2 ways are<br>
+* Munchy-2, Dazzler-1<br>
+* Munchy-1,Dazzler-2<br><br>
+			<h3>Approach</h3>
+It's easy to solve this problem since one can always pick an integer x  and the other N-x integer.<br>
+Here x lies between 0 and N(exclusive).<br>
+The equality x>0 and x < N must hold.<br>
+Therefore N-1 choices of x are there.<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">while</span>(t):
+    t<span style="color: #333333">-=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    <span style="color: #007020">print</span>(<span style="color: #007020">int</span>(<span style="color: #007020">input</span>())<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)
+</pre></div>
+		</p>
+	</div>
+	<div id="2" class="even">
+		<p>
+			<h2>Problem 2: Dazzler the Puzzler</h2>
+			<h3>Problem Statement</h3>
+As their Anna University Semester exams(not arrear exams)are getting nearby, Dazzler and Munchy decided to prepare for exams. Munchy was busy in some work, which is a mystery. Meanwhile Dazzler was stuck at a problem in a subject called RandomCodology. Help him to solve the problem.<br><br>There are A number of 1's and B number of 2's. You can pick C (0<=C<=A) 1's and D (0<=D<=B) 2's, such that the sum of all elements is exactly equal to N.<br><br>If possible, print "YES" (without quotes), else print "NO" (without quotes)<br><br>
+			<h3>Input Format</h3>
+* The first line of the input contains a single integer T, denoting the number of test cases.<br>
+* The first line of each test case consists of two spaced integers A, B and N respectively.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=100000<br>
+* 0<=A,B<=100000000000<br>
+* Subtask 1 (30 Points) : A=0 (The Number of 1's will be equal to 0 )<br>
+* Subtask 2 (70 Points) : Original Constraints<br><br>			
+			<h3>Output Format</h3>
+* Print a single line, "YES" if it is possible, else print "NO"<br><br>
+			<h3>Sample Input 0</h3>
+3<br>
+1 5 11<br>
+5 1 11<br>
+0 0 0<br><br>
+			<h3>Sample Output 0</h3>
+YES<br>
+NO<br>
+YES<br><br>
+			<h3>Approach</h3>
+We need to have atleast one 1 to make a number odd. So if the required number is a odd number then the value of A should be atleast one. else it is not possible.<br><br>
+Then for all values of N (regardless its whether even or odd) it must satisfy a*1+b*2>=n. else its impossible<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> _ <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    a,b,n<span style="color: #333333">=</span><span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split())
+    <span style="color: #008800; font-weight: bold">if</span>(n<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">1</span>):
+        <span style="color: #008800; font-weight: bold">if</span>(a<span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">0</span>):
+            <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;NO&quot;</span>)
+        <span style="color: #008800; font-weight: bold">else</span>:
+            <span style="color: #008800; font-weight: bold">if</span>(a<span style="color: #333333">*</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">+</span>b<span style="color: #333333">*</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">&gt;=</span>n):
+                <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;YES&quot;</span>)
+            <span style="color: #008800; font-weight: bold">else</span>:
+                <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;NO&quot;</span>)
+    <span style="color: #008800; font-weight: bold">else</span>:
+        <span style="color: #008800; font-weight: bold">if</span>(a<span style="color: #333333">*</span><span style="color: #0000DD; font-weight: bold">1</span><span style="color: #333333">+</span>b<span style="color: #333333">*</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">&gt;=</span>n):
+                <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;YES&quot;</span>)
+        <span style="color: #008800; font-weight: bold">else</span>:
+                <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;NO&quot;</span>)
+</pre></div>
+		</p>
+	</div>
+	<div id=3>
+		<p>
+			<h2>Problem 3: Munchy and Dazzler's New Girlfriend</h2>
+			<h3>Problem Statement</h3>
+While Dazzler was busy solving a math problem, Munchy was feeling guilty of Dazzler's recent breakup and hence he decided to settle it by finding a new girlfriend for Dazzler. Therefore to select the perfect girl for him he decided to host a competition.<br><br>
+The game consists of N girls standing in a circle numbered from 1,2...to N.At time Y=1 ,Munchy gives the 1st girl a ball.Then after every second,the ith girl passes the ball to the (i+1)th if i≠N,else if the ith girl is in the Nth position then she will pass it to the 1st girl again.<br><br>
+Formally, if N is 3,then the game follows as :<br><br>
+1.At the end of 1st second 1st girl receives the ball.<br>
+2.At the end of 2nd second 1st girl throws the ball to 2nd girl.<br>
+3.At the end of 3rd second 2nd girl throws the ball to 3rd girl.<br>
+4.At the end of 4th second 3rd girl throws the ball to 1st girl.........<br>
+The game continues like that.<br><br>
+Munchy is bored as the game goes on infinitely,so he stopped the game at Mth second and asked some Rth girl (where 1<=R<=N) the number of times she received the ball from the 1st second till that time.<br><br>
+Since Munchy needs that girl to win , he asks your help.<br><br>
+			<h3>Input Format</h3>
+* The first line consist of T denoting the number of testcases.<br>
+* The second line consists of 2 space-separated 3 integers N,M,R.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=100000<br>
+* 2<=N<=10^18<br>
+* 1<=M<=10^18<br>
+* 1<=R<=N<br><br>
+			<h3>Output Format</h3>
+* Print one line for each testcase consisting of the number of times the Rth girl had received the ball during the entire game upto Mth second.<br><br>
+			<h3>Sample Input 0</h3>
+1<br>
+2 3 1<br><br>
+			<h3>Sample Output 0</h3>
+2<br><br>
+			<h3>Explanation 0</h3>
+* At the end of 3rd second ,1st girl had received the ball two times,once during the 1st second from Munchy initially and one more time at the end of 3rd second from the 2nd girl.<br>
+* Hence the answer is 2.<br><br>
+			<h3>Approach</h3>
+- For this problem let's define a lap as time taken to receive the ball from the Nth girl to the 1st girl.<br>
+- So for M seconds, the number of required laps would be M/N(floor divison).<br>
+- Now every girl irrespective of the position would have received exactly the ball M/N times. Now what if there are seconds that doesn't contribute to laps?<br>
+- If M is 8 and N is 6, M/N gives 1 lap. But still there are 2 seconds left and the game will continue for that remaining seconds.<br>
+- The remaining seconds will be given by M%N which is the remainder of M when divided by N.<br>
+- The incomplete seconds will again start from the 1st girl and will end within N-1 th girl, since if it ends with Nth girl this will form a lap.<br>
+- Therefore the ball goes to each girl starting from 1st girl to M%N th girl.<br>
+- Check if the Rth girl is within this range.<br>
+- If yes, then answer is M/N + 1.<br>
+- Else, it is simply M/N.<br><br>
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">while</span>(t):
+    t<span style="color: #333333">-=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    n,m,r<span style="color: #333333">=</span><span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split())
+    <span style="color: #007020">print</span>(m<span style="color: #333333">//</span>n<span style="color: #333333">+</span>(r<span style="color: #333333">&lt;=</span>m<span style="color: #333333">%</span>n))
+</pre></div>
+
+		</p>
+</div>
+	<div id="4" class="even">
+		<p>
+			<h2>Problem 4: Dazzler's String Bits</h2>
+			<h3>Problem Statement</h3>
+You are given a binary string A consisting of '1's and '0's of length N.<br>
+You can make any one of the operations given below any number of times(possibly zero)<br><br>
+    1. Remove the first bit and append it at the last. Example : If "001001" is the string  you can make it as "010010"<br>
+    2. Remove the last bit and append it at the beginning. Example : If "010010" is the     string you can make it as "001001"<br><br>
+You can make these operations even infinite time. After doing sufficient amount of operations, you will arrive at the required <br>string, where maximum length of consecutive '1's and maximum length of consecutive '0's should be maximum.<br><br>
+"101 000 100 1111" In this string maximum length of consecutive '1's is 4 (highlighted in the string)and maximum length of consecutive '0's is 3.<br><br>
+Print the maximum length of consecutive '0's and maximum length of consecutive '1's in that resultant string.<br><br>
+			<h3>Input Format</h3>
+* First line will contain T, number of testcases. Then the testcases follow.<br> 
+* The first line of each test case contains N.<br> 
+* The second line of each test case contains the binary string A consisting of only "1"s and "0"s.<br><br>
+			<h3>Constraints</h3>
+* 1<=T<=1000 <br>
+* 1<=|A|<=100000<br>
+* Sum of N over all test cases does not exceed 100000<br><br>			
+			<h3>Output Format</h3>
+* Print a single line consisting of two spaced integers, the maximum of lengths of consecutive '0's and maximum of lengths of consecutive '1's in that resultant string.<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+6<br>
+000111<br>
+7<br>
+0101010<br><br>
+			<h3>Sample Output 0</h3>
+3 3<br>
+2 1<br><br>
+            <h3>Explanation 0</h3>
+* In the first test case, We can make the first operation thrice and the string will be "111000". So the answer will be "3 3"<br>
+* In the second test case, we can do the second operation once, and the string will be "1010100". So the answer will be "2 1"<br><br>
+			<h3>Approach</h3>
+- We can just finish the problem by just making the first operation as many number of times an opposite string bit from the first bit is met.<br>
+- Then from there its easy to get the maximum of consecutive length '1's and  maximum of consecutive length '0's easily in O(n).<br>
+- See the code for further implementation.<br><br>			
+			<h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">t<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> k <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(t):
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    b<span style="color: #333333">=</span><span style="color: #007020">input</span>()
+    i,max0,max1<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">0</span>,<span style="color: #0000DD; font-weight: bold">0</span>
+    <span style="color: #008800; font-weight: bold">if</span> b[<span style="color: #0000DD; font-weight: bold">0</span>]<span style="color: #333333">==</span>b[<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]:
+        <span style="color: #008800; font-weight: bold">if</span> b[<span style="color: #0000DD; font-weight: bold">0</span>]<span style="color: #333333">==</span><span style="background-color: #fff0f0">&#39;1&#39;</span>:
+            c<span style="color: #333333">=</span>b<span style="color: #333333">.</span>find(<span style="background-color: #fff0f0">&#39;0&#39;</span>)
+            <span style="color: #008800; font-weight: bold">if</span> c<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>:
+                b<span style="color: #333333">=</span>b[c:]<span style="color: #333333">+</span>b[:c]
+        <span style="color: #008800; font-weight: bold">else</span>:
+            c<span style="color: #333333">=</span>b<span style="color: #333333">.</span>find(<span style="background-color: #fff0f0">&#39;1&#39;</span>)
+            <span style="color: #008800; font-weight: bold">if</span> c<span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">1</span>:
+                b<span style="color: #333333">=</span>b[c:]<span style="color: #333333">+</span>b[:c]
+    <span style="color: #008800; font-weight: bold">while</span> i<span style="color: #333333">&lt;</span>n:
+        <span style="color: #008800; font-weight: bold">if</span> b[i]<span style="color: #333333">==</span><span style="background-color: #fff0f0">&#39;1&#39;</span>:
+            c<span style="color: #333333">=</span>b[i:]<span style="color: #333333">.</span>find(<span style="background-color: #fff0f0">&#39;0&#39;</span>)
+            <span style="color: #008800; font-weight: bold">if</span> c<span style="color: #333333">==-</span><span style="color: #0000DD; font-weight: bold">1</span>:
+                c<span style="color: #333333">=</span><span style="color: #007020">len</span>(b[i:])
+            <span style="color: #008800; font-weight: bold">if</span> c<span style="color: #333333">&gt;</span>max1:
+                max1<span style="color: #333333">=</span>c
+            i<span style="color: #333333">+=</span>c
+        <span style="color: #008800; font-weight: bold">else</span>:
+            c<span style="color: #333333">=</span>b[i:]<span style="color: #333333">.</span>find(<span style="background-color: #fff0f0">&#39;1&#39;</span>)
+            <span style="color: #008800; font-weight: bold">if</span> c<span style="color: #333333">==-</span><span style="color: #0000DD; font-weight: bold">1</span>:
+                c<span style="color: #333333">=</span><span style="color: #007020">len</span>(b[i:])
+            <span style="color: #008800; font-weight: bold">if</span> c<span style="color: #333333">&gt;</span>max0:
+                max0<span style="color: #333333">=</span>c
+            i<span style="color: #333333">+=</span>c
+    <span style="color: #007020">print</span>(max0,max1)
+</pre></div>
+
+		</p>
+	</div>
+    <div id="5">
+        <p>
+            <h2>Problem 5: Munchy and The Trap(s)</h2>
+            <h3>Problem Statement</h3>
+You are given a grid of N rows and M columns. Initially you are at the cell (1,1) which is the starting point. You have to be safe and want to reach the end of the grid which is situated at (n,m)th cell.<br>
+Yeah it's easy at glance, but however there are exactly B amount of traps scattered across the grid which will kill you instantly.<br>
+Nobody wants to die and you should avoid these trap cells at any cost.<br>
+You aren't flexible enough and you can move only to the right cell or a cell immediately below to where you are currently at.<br>
+There are many distinct paths to reach the destination cell.<br>
+Find the number of total distinct paths which will guarantee you a safe path modulo 10^9+7.<br><br>
+            <h3>Input Format</h3>
+* First line contains two space-separated integers N,M and B,denoting the number of rows, columns and the blocks respectively.<br>
+* Then next B line contains space separated two integers X and Y, denoting the block at Xth row and Yth column.<br><br>
+            <h3>Constraints</h3>
+* 1<=N<=1000<br>
+* 1<=M<=1000<br>
+* 1<=B<=(N*M-2)<br>
+* 1<=X<=N<br>
+* 1<=Y<=M<br>
+* It is guaranteed that the block won't be at the destination cell.<br><br>           
+            <h3>Output Format</h3>
+* Print one single line denoting the number of possible safe paths modulo 10^9+7.<br><br>
+            <h3>Sample Input 0</h3>
+3 3 1<br>
+2 2<br><br>
+            <h3>Sample Output 0</h3>
+2<br><br>
+            <h3>Explanation 0</h3>
+<img src="images/exp1.jpeg" style="width: 25%;"><br><br>
+            <h3>Approach</h3>
+The approach is simple and can be solved using Dynamic Programming approach.<br>
+Let dp[i][j] be the total number of ways required to reach the (i,j)th cell.<br>
+Set dp[1][1] as 1, since the source is always having 1 possible way initially.<br><br>
+And for every block (X,Y),just set dp[X][Y] as -1, indicating that the cell is blocked and going through that cell is useless.<br><br>
+Now iterate through  the column linearly of each row and do the following dp transitions:<br><br>
+1.If the current (i,j)th cell is a trap do nothing.<br>
+2.If the immediate upper cell i.e (i-1,j)th cell is a **valid** cell then 
+do dp[i][j]+=dp[i-1][j].<br>
+3.If the immediate left cell i.e (i,j-1)th cell is a **valid** cell then 
+do dp[i][j]+=dp[i][j-1].<br>
+4.Apply modulo 10^9+7 for every possible transition.<br><br>
+Finally print dp[N][M].<br><br>            
+            <h3>Code in Python</h3>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:15px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">math</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">collections</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">random</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">bisect</span> <span style="color: #008800; font-weight: bold">import</span> <span style="color: #333333">*</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">sys</span>
+<span style="color: #007020">input</span><span style="color: #333333">=</span>sys<span style="color: #333333">.</span>stdin<span style="color: #333333">.</span>readline
+n,m,b<span style="color: #333333">=</span><span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split())
+r<span style="color: #333333">=</span>[[<span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(m)] <span style="color: #008800; font-weight: bold">for</span> j <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n)]
+<span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(b):
+    x,y<span style="color: #333333">=</span><span style="color: #007020">map</span>(<span style="color: #007020">int</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split())
+    r[x<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>][y<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]<span style="color: #333333">=-</span><span style="color: #0000DD; font-weight: bold">1</span>
+r[<span style="color: #0000DD; font-weight: bold">0</span>][<span style="color: #0000DD; font-weight: bold">0</span>]<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>
+p<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1000000007</span>
+<span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n):
+    <span style="color: #008800; font-weight: bold">for</span> j <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(m):
+        <span style="color: #008800; font-weight: bold">if</span>((i<span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #000000; font-weight: bold">and</span> j<span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">0</span>) <span style="color: #000000; font-weight: bold">or</span> r[i][j]<span style="color: #333333">==-</span><span style="color: #0000DD; font-weight: bold">1</span>):
+            <span style="color: #008800; font-weight: bold">continue</span>
+        <span style="color: #008800; font-weight: bold">if</span>(i<span style="color: #333333">!=</span><span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #000000; font-weight: bold">and</span> r[i<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>][j]<span style="color: #333333">!=-</span><span style="color: #0000DD; font-weight: bold">1</span>):
+            r[i][j]<span style="color: #333333">+=</span>r[i<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>][j]
+            r[i][j]<span style="color: #333333">%=</span>p
+        <span style="color: #008800; font-weight: bold">if</span>(j<span style="color: #333333">!=</span><span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #000000; font-weight: bold">and</span> r[i][j<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]<span style="color: #333333">!=-</span><span style="color: #0000DD; font-weight: bold">1</span>):
+            r[i][j]<span style="color: #333333">+=</span>r[i][j<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>]
+            r[i][j]<span style="color: #333333">%=</span>p
+<span style="color: #007020">print</span>(r[<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>][<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>])
+</pre></div>
+
+        </p>
+    </div>
+</main>
+<footer>
+	<p>Instagram : <a href="https://www.instagram.com/randomcoders/" target="_blank">@randomcoders</a></p>
+	<p>email id  : randomcoders4@gmail.com</p>
+	<p>HackerRank: <a href="https://www.hackerrank.com/randomcoders4" target="_blank">randomcoders4</a></p>
+</footer>
+</body>
+</html>

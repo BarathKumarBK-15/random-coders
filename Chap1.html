@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>RandomCoders:Chapter-1Solutions</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/jpeg" 
+	href="images/icon.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/rc.css"/>
+	<script type="text/javascript" src="js/rc.js"></script>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="ps.html">Practice</a>
+        <a href="q.html">Contests</a>
+        <a href="Solutions.html">Solutions</a>
+        <a href="aboutus.html">About Us</a>
+    </nav>
+</header>
+<main>
+    <br><br>
+	<nav>
+		<button onclick="prob(1)">Problem:1 Rectanle. Will U Convert?</button>
+		<button onclick="prob(2)">Problem:2 Try to print me!</button>
+		<button onclick="prob(3)">Problem:3 Pascal's Matrix</button>
+	</nav>
+	<div id="1">
+		<h2>Problem 1: Rectangle. Will you Convert?</h2>
+		<p>
+			<h3>Problem Statement</h3>
+			Given a Rectangle of length, L, and breadth, B. The length and breadth of the rectangle are increasing at the rates Rl and Rb respectively. Both L and B are in meters and Rl and Rb are in meter per second. Find the time t in seconds at which the rectangle will convert into a square.<br><br>Note: The conversion is not possible at all situations. If so print '-1'
+			<br><br>
+			<h3>Input Format</h3>
+* The first contains a single integer 'T' that represents the number of test cases<br>
+* The first line of each test case contains two space seperated integers that represent the length and breadth of the rectangle respectively<br>
+* The second line of each test case contains two space seperated integers that represent the rate of increase in length and breadth of the rectangle respectively<br><br>
+			<h3>Constraints</h3>
+* 1 <= T <= 100<br>
+* 1 <= L,B <= 10^8<br>
+* 1 <= Rl,Rb <= 10^8<br><br>
+			<h3>Sample Input 0</h3>
+
+3<br>
+2 1<br>
+1 2<br>
+5 3<br>
+8 4<br>
+10 10<br>
+1 2<br><br>
+			<h3>Sample Output 0</h3>
+1.000000<br>
+-1<br>
+0.000000<br><br>
+			<h3>Explanation 0</h3>
+* Case 1: Initially at t=0 L=2 and B=1. Therefore at t=1, L=2+1=3 and B=1+2=3.Thus at t=1, L=B ,so the rectangle becomes a square.<br>
+* Case 2: Initially length is greater than breadth. Also the rate of increase in length is greater than that of breadth. Therefore the rectangle never becomes a square. Thus, output=-1<br>
+* Case 3: The measurements given represent a square at t=0. Thus output = 0.000000<br><br>
+			<h3>Approach</h3>
+			<h4>1. Basic Prerequisites:</h4>
+- For a rectangle to be a square length must be equal to breadth
+<h4>2. Complete Approach:</h4>
+- For possible cases<br>
+- new length(nl)= old length(L) + (t)time x rate_increase_in_length(Rl)<br>
+- new breadth(nb)= old breadth(B) + (t)time x rate_increase_in_breadth(Rb)<br>
+- When new length = new breadth, L+t(Rl)=B+t(Rb)<br>
+- Therefore t=(L-B)/(Rb-Rl)<br>
+- Impossible cases are:<br>
+- When, L>B and Rl>=Rb and vice-versa<br><br>
+			<h3>Code in C++</h3>
+			<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius: 5px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;iostream&gt;</span>
+<span style="color: #557799">#include &lt;iomanip&gt;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    <span style="color: #333399; font-weight: bold">int</span> t;
+    cin <span style="color: #333333">&gt;&gt;</span> t;
+    <span style="color: #008800; font-weight: bold">while</span>(t<span style="color: #333333">--</span>) {
+        <span style="color: #333399; font-weight: bold">int</span> l , b , rb , rl;
+        cin <span style="color: #333333">&gt;&gt;</span> l <span style="color: #333333">&gt;&gt;</span> b <span style="color: #333333">&gt;&gt;</span> rl <span style="color: #333333">&gt;&gt;</span> rb;
+        
+        <span style="color: #888888">//The given dimensions are already of a square.</span>
+        <span style="color: #008800; font-weight: bold">if</span>(l<span style="color: #333333">==</span>b)
+            cout<span style="color: #333333">&lt;&lt;</span><span style="background-color: #fff0f0">&quot;0.000000</span><span style="color: #666666; font-weight: bold; background-color: #fff0f0">\n</span><span style="background-color: #fff0f0">&quot;</span>;
+
+        <span style="color: #888888">//For the given dimensions the rectangle never forms a square.</span>
+        <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span>((l <span style="color: #333333">&gt;</span> b <span style="color: #333333">&amp;&amp;</span> rl <span style="color: #333333">&gt;</span> rb) <span style="color: #333333">||</span> (l <span style="color: #333333">&lt;</span> b <span style="color: #333333">&amp;&amp;</span> rl <span style="color: #333333">&lt;</span> rb) <span style="color: #333333">||</span> (rl <span style="color: #333333">==</span> rb))
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;-1&quot;</span> <span style="color: #333333">&lt;&lt;</span> endl;
+
+        <span style="color: #888888">//Use the formula to find the time based on given dimensions.</span>
+        <span style="color: #008800; font-weight: bold">else</span> {
+            <span style="color: #333399; font-weight: bold">double</span> time;
+            time <span style="color: #333333">=</span> <span style="color: #333399; font-weight: bold">double</span>(l <span style="color: #333333">-</span> b) <span style="color: #333333">/</span> (rb <span style="color: #333333">-</span> rl);
+            cout <span style="color: #333333">&lt;&lt;</span> fixed <span style="color: #333333">&lt;&lt;</span> setprecision(<span style="color: #0000DD; font-weight: bold">6</span>) <span style="color: #333333">&lt;&lt;</span> time <span style="color: #333333">&lt;&lt;</span> endl;
+        }
+    }
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+
+
+			<h3>Code in Python</h3>
+			<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border: solid grey;border-radius: 5px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">test<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> case <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(test):
+    l,b<span style="color: #333333">=</span><span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">float</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+    rl,rb<span style="color: #333333">=</span><span style="color: #007020">list</span>(<span style="color: #007020">map</span>(<span style="color: #007020">float</span>,<span style="color: #007020">input</span>()<span style="color: #333333">.</span>split()))
+
+    <span style="color: #888888">#The given dimensions are already of a square.</span>
+    <span style="color: #008800; font-weight: bold">if</span> l<span style="color: #333333">==</span>b:                                    
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;0.000000&quot;</span>)
+
+    <span style="color: #888888">#For the given dimensions the rectangle never forms a square.</span>
+    <span style="color: #008800; font-weight: bold">elif</span> l<span style="color: #333333">&gt;</span>b <span style="color: #000000; font-weight: bold">and</span> rl<span style="color: #333333">&gt;</span>rb:                         
+        <span style="color: #007020">print</span>(<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)
+    <span style="color: #008800; font-weight: bold">elif</span> b<span style="color: #333333">&gt;</span>l <span style="color: #000000; font-weight: bold">and</span> rb<span style="color: #333333">&gt;</span>rl:
+        <span style="color: #007020">print</span>(<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)
+    <span style="color: #008800; font-weight: bold">elif</span> rl<span style="color: #333333">==</span>rb:
+        <span style="color: #007020">print</span>(<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)
+
+    <span style="color: #888888">#Use the formula to find the time based on given dimensions</span>
+    <span style="color: #008800; font-weight: bold">else</span>:
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;%.6f&quot;</span><span style="color: #333333">%</span>(<span style="color: #007020">abs</span>((l<span style="color: #333333">-</span>b)<span style="color: #333333">/</span>(rb<span style="color: #333333">-</span>rl))))
+</pre></div>
+		</p>
+	</div>
+	<div id="2" class="even">
+		<p>
+			<h2>Problem 2: Try to print me!</h2>
+			<h3>Problem Statement</h3>
+			Given the no. of rows, print the required pattern which is given below.<br><br>No. of rows , n = 11
+			<br><br>
+			<img class="inimg" src="images/in1.jpeg">
+			<br><br>
+			No. of rows , n = 16
+			<br><br>
+			<img class="inimg" src="images/in2.jpeg">
+			<h3>Input Format</h3>
+			* The first and only line of the input consists of a integer representing the no. of rows
+			<br><br>
+			<h3>Constraints</h3>
+* 1 <= n <= 100
+			<br><br>			
+			<h3>Output Format</h3>
+* Print the required pattern.<br>
+* If the no. of rows is even, print (n + 1) rows.<br>
+* If the no. of rows is odd, print (n) rows.<br><br>
+			<h3>Sample Input 0</h3>
+16<br><br>
+			<h3>Sample Output 0</h3>
+			<img class="inimg" src="images/in2.jpeg"><br><br>
+			<br><br>
+			<h3>Approach</h3>
+			<h4>1. Basic Prerequisites:</h4>
+- Nested for loops and brute force.
+<			<h4>2. Complete Approach:</h4>
+- The problem can we divided into two halves. One is increasing half and the other is decreasing half.<br>
+- Increasing half has (floor(n / 2) + 1) rows.<br>
+- Decreasing half has floor(n / 2) rows.<br>
+- Each row should be printed with variable no. of symbols.<br>
+- So, for each row, we can nest a for loop to print the required no. of symbols.<br><br>
+			<h3>Code in C++</h3>
+			<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius: 5px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;iostream&gt;</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    <span style="color: #333399; font-weight: bold">int</span> n;
+    cin <span style="color: #333333">&gt;&gt;</span> n;
+
+    <span style="color: #888888">//To iterate loop for (n + 1) / 2 rows.</span>
+    <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>; i <span style="color: #333333">&lt;=</span> (n <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>); i<span style="color: #333333">++</span>) {
+
+        <span style="color: #888888">//To print required spaces before the first star appears.</span>
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> j <span style="color: #333333">=</span> n <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; j <span style="color: #333333">&gt;=</span> i; j<span style="color: #333333">--</span>) {
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot; &quot;</span>;
+        }
+
+        <span style="color: #888888">//To print first star for every row.</span>
+        cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;*&quot;</span>;
+
+        <span style="color: #888888">//To print required spaces before the second star appears.</span>
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> j <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>; j <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">*</span> i <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">2</span>; j<span style="color: #333333">++</span>) {
+
+            <span style="color: #888888">//To print a plus at the centre of both the stars.</span>
+            <span style="color: #008800; font-weight: bold">if</span>(j <span style="color: #333333">==</span> (<span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">*</span> i <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">3</span>) <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>) {
+                cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;+&quot;</span>;
+            }
+            <span style="color: #008800; font-weight: bold">else</span> {
+
+                <span style="color: #888888">//To print pluses instead of space between first and second star for the middle (i.e.(n + 1) / 2) row.</span>
+                <span style="color: #008800; font-weight: bold">if</span>(i <span style="color: #333333">==</span> n <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>) {
+                    cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;+&quot;</span>;
+                }
+
+                <span style="color: #888888">//To print spaces instead of plus between first and second star for other rows that is not the middle one.</span>
+                <span style="color: #008800; font-weight: bold">else</span> {
+                    cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot; &quot;</span>;
+                }
+            }
+        }
+
+        <span style="color: #888888">//To print the second star for every row except the first row.</span>
+        <span style="color: #008800; font-weight: bold">if</span>(i <span style="color: #333333">!=</span> <span style="color: #0000DD; font-weight: bold">1</span>) {
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;*&quot;</span>;
+        }
+        cout <span style="color: #333333">&lt;&lt;</span> endl;
+    }
+
+    <span style="color: #888888">//To iterate loop for (n) / 2 rows.</span>
+    <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span> , m <span style="color: #333333">=</span> n <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>; i <span style="color: #333333">&lt;=</span> n <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>; m<span style="color: #333333">--</span> , i<span style="color: #333333">++</span>) {
+
+        <span style="color: #888888">//To print required spaces before the first star appears.</span>
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> j <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>; j <span style="color: #333333">&lt;=</span> i; j<span style="color: #333333">++</span>) {
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot; &quot;</span>;
+        }
+
+        <span style="color: #888888">//To print first star for every row.</span>
+        cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;*&quot;</span>;
+
+        <span style="color: #888888">//To print required spaces before the second star appears.</span>
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> j <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span>; j <span style="color: #333333">&lt;=</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">*</span> m <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>; j<span style="color: #333333">++</span>) {
+
+            <span style="color: #888888">//To print a plus at the centre of both the stars.</span>
+            <span style="color: #008800; font-weight: bold">if</span>(j <span style="color: #333333">==</span> (<span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">*</span> m <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>) <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>) {
+                cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;+&quot;</span>;
+            }
+
+            <span style="color: #888888">//To print spaces between the first and second star.</span>
+            <span style="color: #008800; font-weight: bold">else</span> {
+                cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot; &quot;</span>;
+            }
+        }
+
+        <span style="color: #888888">//To print the second star for every row except the last row.</span>
+        <span style="color: #008800; font-weight: bold">if</span>(i <span style="color: #333333">!=</span> n <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>) {
+            cout <span style="color: #333333">&lt;&lt;</span> <span style="background-color: #fff0f0">&quot;*&quot;</span>;
+        }
+        cout <span style="color: #333333">&lt;&lt;</span> endl;
+    }
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+			<h3>Code in Python</h3>
+			<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:none;border-radius:5px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+
+<span style="color: #888888">#To print (n + 1) rows if n is even.</span>
+<span style="color: #008800; font-weight: bold">if</span> n<span style="color: #333333">%</span><span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">==</span><span style="color: #0000DD; font-weight: bold">0</span>:
+    n<span style="color: #333333">+=</span><span style="color: #0000DD; font-weight: bold">1</span>
+
+<span style="color: #888888">#To iterate the loop for n rows.</span>
+<span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n):
+
+    <span style="color: #888888">#To print the required spaces before the first star appears.</span>
+    <span style="color: #008800; font-weight: bold">for</span> s <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #007020">abs</span>(i<span style="color: #333333">-</span>n<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>)):
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;&quot;</span>,end<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot; &quot;</span>)
+
+    <span style="color: #888888">#To print the first star.</span>
+    <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;*&quot;</span>,end<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;&quot;</span>)
+
+    
+    <span style="color: #008800; font-weight: bold">if</span> i<span style="color: #333333">!=</span><span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #000000; font-weight: bold">and</span> i<span style="color: #333333">!=</span>n<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>:
+
+        <span style="color: #888888">#To print plus at the centre of the first and second star.</span>
+        <span style="color: #008800; font-weight: bold">if</span> i<span style="color: #333333">==</span>n<span style="color: #333333">//</span><span style="color: #0000DD; font-weight: bold">2</span>:
+            <span style="color: #008800; font-weight: bold">for</span> j <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(n<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">2</span>):
+                <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;+&quot;</span>,end<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;&quot;</span>)
+        <span style="color: #008800; font-weight: bold">else</span>:
+            m<span style="color: #333333">=</span><span style="color: #007020">min</span>(i,n<span style="color: #333333">-</span>i<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)
+            <span style="color: #008800; font-weight: bold">for</span> j <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #0000DD; font-weight: bold">2</span><span style="color: #333333">*</span>m<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>):
+
+                <span style="color: #888888">#To print the pluses instead of spaces when it is the middle row.</span>
+                <span style="color: #008800; font-weight: bold">if</span> j<span style="color: #333333">==</span>m<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>:
+                    <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;+&quot;</span>,end<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;&quot;</span>)
+
+                <span style="color: #888888">#To print the spaces between the first and second star.</span>
+                <span style="color: #008800; font-weight: bold">else</span>:
+                    <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;&quot;</span>,end<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot; &quot;</span>)
+
+        <span style="color: #888888">#To print the second star when it is not first and last row.</span>
+        <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;*&quot;</span>,end<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;&quot;</span>)
+    <span style="color: #007020">print</span>(<span style="background-color: #fff0f0">&quot;&quot;</span>)
+</pre></div>
+		</p>
+	</div>
+	<div id=3>
+		<p>
+			<h2>Problem 3: Pascal's Matrix</h2>
+			<h3>Problem Statement</h3>
+			A Pascal's Matrix is an NXN matrix containing the first N rows of the Pascal's triangle aligned to the left and all the other elements are zero.<br><br>
+Pascal's Matrix for N=6 is given below.<br><br>
+<img class="inimg" src="images/Sample1.jpeg"><br>
+Find the sum of upper half of the Pascal's Matrix w.r.t Seondary diagonal.
+The Sum might be very large, so compute the sum modulo (10^9+7)<br><br>
+Note: Pascal's matrix is always a square matrix<br><br>
+			<h3>Input Format</h3>
+* The first line constains a single integer T representing the number of test cases<br>
+* Each test case consists of a single integer N denoting the number of rows of the Pascals matrix<br><br>
+<h3>Constraints</h3>
+* 1 <= T <= 100<br>
+* 1 <= N <= 100<br><br>
+<h3>Output Format</h3>
+*For each test case, print the sum of upperhalf wrt secondary diagonal modulo (10^9+7)<br><br>
+Example:<br><br>
+<img class="inimg" src="images/Sample2.jpeg"><br><br>
+Output: (1)+(1+1)+(1+2+1)+(1+3+3)+(1+4)+(1)=20<br><br>
+<h3>Sample Input 0</h3>
+2<br>
+6<br>
+2<br><br>
+<h3>Sample Output 0</h3>
+20<br>
+2<br><br>
+<h3>Explanation 0</h3>
+* Case 1: N=6<br><br>
+<img class="inimg" src="images/Sample2.jpeg"><br><br>
+As per the above matrix sum of upper half mod 10^9+7 is 20<br>
+* Case 2: N=2, similarly sum of upper half mod 10^9+7 is 2<br><br>
+			<h3>Approach</h3>
+			<h4>1.Basic Prerequisites</h4>
+* Pascal's triangle<br>
+* Fibonacci Series<br><br>
+			<h4>2.Complete Approach</h4>
+<img class="inimg" src="images/Sample3.jpeg"><br>
+As per the above image sum of upper half of the Pascal's Matrix wrt Secondary diagonal with N rows is the sum of first (N+1) terms in the Fibonacci series.<br><br>
+Compute the sum modulo 10^9+7<br><br>
+			<h3>Code in C++</h3>
+			<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius:5px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">#include &lt;iostream&gt;</span>
+<span style="color: #557799">#define mod 1000000007</span>
+
+<span style="color: #008800; font-weight: bold">using</span> <span style="color: #008800; font-weight: bold">namespace</span> std;
+
+<span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">main</span>() {
+    <span style="color: #333399; font-weight: bold">int</span> t;
+    cin <span style="color: #333333">&gt;&gt;</span> t;
+    <span style="color: #008800; font-weight: bold">while</span>(t<span style="color: #333333">--</span>) {
+        <span style="color: #333399; font-weight: bold">int</span> n;
+        cin <span style="color: #333333">&gt;&gt;</span> n;
+        <span style="color: #333399; font-weight: bold">int</span> sum <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        <span style="color: #333399; font-weight: bold">int</span> first <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">1</span> , second <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span> , third;
+
+        <span style="color: #888888">//To produce the fibonacci of (n + 1) terms and calculate its sum modulo 10^9 + 7.</span>
+        <span style="color: #008800; font-weight: bold">while</span>(n<span style="color: #333333">--</span>) {
+            third <span style="color: #333333">=</span> (first <span style="color: #333333">+</span> second) <span style="color: #333333">%</span> mod;
+            sum <span style="color: #333333">=</span> (sum <span style="color: #333333">+</span> third) <span style="color: #333333">%</span> mod;
+            first <span style="color: #333333">=</span> second;
+            second <span style="color: #333333">=</span> third;
+        }
+        cout <span style="color: #333333">&lt;&lt;</span> sum <span style="color: #333333">&lt;&lt;</span> endl;
+    }
+    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+}
+</pre></div>
+			<h3>Code in Python</h3>
+			<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:92%;border:solid grey;border-radius: 5px;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">test<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+<span style="color: #008800; font-weight: bold">for</span> case <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(test):
+    n<span style="color: #333333">=</span><span style="color: #007020">int</span>(<span style="color: #007020">input</span>())
+    a<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>
+    b<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>
+    ans<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>
+    c<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">0</span>
+
+    <span style="color: #888888">#To produce the fibonacci of (n + 1) terms and calculate its sum.</span>
+    <span style="color: #008800; font-weight: bold">while</span> n<span style="color: #333333">&gt;</span><span style="color: #0000DD; font-weight: bold">0</span>:
+        c<span style="color: #333333">=</span>a<span style="color: #333333">+</span>b
+        ans<span style="color: #333333">+=</span>c
+        a<span style="color: #333333">=</span>b
+        b<span style="color: #333333">=</span>c
+        n<span style="color: #333333">-=</span><span style="color: #0000DD; font-weight: bold">1</span>
+
+    <span style="color: #888888">#Printing the solution as sum modulo 10^9 + 7.</span>
+    <span style="color: #007020">print</span>(ans<span style="color: #333333">%</span>(<span style="color: #0000DD; font-weight: bold">10</span><span style="color: #333333">**</span><span style="color: #0000DD; font-weight: bold">9</span><span style="color: #333333">+</span><span style="color: #0000DD; font-weight: bold">7</span>))
+</pre></div>
+
+		</p>
+	</div>
+</main>
+<footer>
+	<p>Instagram : <a href="https://www.instagram.com/randomcoders/" target="_blank">@randomcoders</a></p>
+	<p>email id  : randomcoders4@gmail.com</p>
+	<p>HackerRank: <a href="https://www.hackerrank.com/randomcoders4" target="_blank">randomcoders4</a></p>
+</footer>
+</body>
+</html>

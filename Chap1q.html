@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>RandomCoders:Chapter-1</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/jpeg" 
+	href="images/icon.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/rc.css"/>
+	<script type="text/javascript" src="js/rc.js"></script>
+</head>
+<body>
+<header>
+	<nav>
+		<a href="index.html">Home</a>
+		<a href="ps.html">Practice</a>
+		<a href="q.html">Contests</a>
+		<a href="Solutions.html">Solutions</a>
+		<a href="aboutus.html">About Us</a>
+	</nav>
+</header>
+<main>
+	<br><br>
+	<nav>
+		<button onclick="prob(1)">Problem:1 Rectanle. Will U Convert?</button>
+		<button onclick="prob(2)">Problem:2 Try to print me!</button>
+		<button onclick="prob(3)">Problem:3 Pascal's Matrix</button>
+	</nav>
+	<div id="1">
+		<h2>Problem 1: Rectangle. Will you Convert?</h2>
+		<p>
+			<h3>Problem Statement</h3>
+			Given a Rectangle of length, L, and breadth, B. The length and breadth of the rectangle are increasing at the rates Rl and Rb respectively. Both L and B are in meters and Rl and Rb are in meter per second. Find the time t in seconds at which the rectangle will convert into a square.<br><br>Note: The conversion is not possible at all situations. If so print '-1'
+			<br><br>
+			<h3>Input Format</h3>
+* The first contains a single integer 'T' that represents the number of test cases<br>
+* The first line of each test case contains two space seperated integers that represent the length and breadth of the rectangle respectively<br>
+* The second line of each test case contains two space seperated integers that represent the rate of increase in length and breadth of the rectangle respectively<br><br>
+			<h3>Constraints</h3>
+* 1 <= T <= 100<br>
+* 1 <= L,B <= 10^8<br>
+* 1 <= Rl,Rb <= 10^8<br><br>
+			<h3>Output Format</h3>
+* For each test case print the time taken for the rectangle to convert into a square.<br>
+* The time must be printed upto six floating points<br>
+* In case, there is no possibility of conversion print -1<br><br>
+			<h3>Sample Input 0</h3>
+
+3<br>
+2 1<br>
+1 2<br>
+5 3<br>
+8 4<br>
+10 10<br>
+1 2<br><br>
+			<h3>Sample Output 0</h3>
+1.000000<br>
+-1<br>
+0.000000<br><br>
+			<h3>Explanation 0</h3>
+* Case 1: Initially at t=0 L=2 and B=1. Therefore at t=1, L=2+1=3 and B=1+2=3.Thus at t=1, L=B ,so the rectangle becomes a square.<br>
+* Case 2: Initially length is greater than breadth. Also the rate of increase in length is greater than that of breadth. Therefore the rectangle never becomes a square. Thus, output=-1<br>
+* Case 3: The measurements given represent a square at t=0. Thus output = 0.000000<br><br>
+		</p>
+	</div>
+	<div id="2" class="even">
+		<p>
+			<h2>Problem 2: Try to print me!</h2>
+			<h3>Problem Statement</h3>
+			Given the no. of rows, print the required pattern which is given below.<br><br>No. of rows , n = 11
+			<br><br>
+			<img src="images/in1.jpeg" style="width: 10%;">
+			<br><br>
+			No. of rows , n = 16
+			<br><br>
+			<img src="images/in2.jpeg" style="width: 10%;">
+			<h3>Input Format</h3>
+			* The first and only line of the input consists of a integer representing the no. of rows
+			<br><br>
+			<h3>Constraints</h3>
+* 1 <= n <= 100
+			<br><br>			
+			<h3>Output Format</h3>
+* Print the required pattern.<br>
+* If the no. of rows is even, print (n + 1) rows.<br>
+* If the no. of rows is odd, print (n) rows.<br><br>
+			<h3>Sample Input 0</h3>
+16<br><br>
+			<h3>Sample Output 0</h3>
+			<img src="images/in2.jpeg" style="width: 10%;"><br><br>
+			<br><br>
+		</p>
+	</div>
+	<div id=3>
+		<p>
+			<h2>Problem 3: Pascal's Matrix</h2>
+			<h3>Problem Statement</h3>
+			A Pascal's Matrix is an NXN matrix containing the first N rows of the Pascal's triangle aligned to the left and all the other elements are zero.<br><br>
+Pascal's Matrix for N=6 is given below.<br><br>
+<img src="images/Sample1.jpeg" style="width: 10%;"><br>
+Find the sum of upper half of the Pascal's Matrix w.r.t Seondary diagonal.
+The Sum might be very large, so compute the sum modulo (10^9+7)<br><br>
+Note: Pascal's matrix is always a square matrix<br><br>
+			<h3>Input Format</h3>
+* The first line constains a single integer T representing the number of test cases<br>
+* Each test case consists of a single integer N denoting the number of rows of the Pascals matrix<br><br>
+<h3>Constraints</h3>
+* 1 <= T <= 100<br>
+* 1 <= N <= 100<br><br>
+<h3>Output Format</h3>
+*For each test case, print the sum of upperhalf wrt secondary diagonal modulo (10^9+7)<br><br>
+Example:<br><br>
+<img src="images/Sample2.jpeg" style="width: 10%;"><br><br>
+Output: (1)+(1+1)+(1+2+1)+(1+3+3)+(1+4)+(1)=20<br><br>
+<h3>Sample Input 0</h3>
+2<br>
+6<br>
+2<br><br>
+<h3>Sample Output 0</h3>
+20<br>
+2<br><br>
+<h3>Explanation 0</h3>
+* Case 1: N=6<br><br>
+<img src="images/Sample2.jpeg" style="width: 11%"><br><br>
+As per the above matrix sum of upper half mod 10^9+7 is 20<br>
+* Case 2: N=2, similarly sum of upper half mod 10^9+7 is 2<br>
+		</p>
+	</div>
+	<button onclick="gotochap(1)">View Solutions</button>
+</main>
+<footer>
+	<p>Instagram : <a href="https://www.instagram.com/randomcoders/" target="_blank">@randomcoders</a></p>
+	<p>email id  : randomcoders4@gmail.com</p>
+	<p>HackerRank: <a href="https://www.hackerrank.com/randomcoders4" target="_blank">randomcoders4</a></p>
+</footer>
+</body>
+</html>

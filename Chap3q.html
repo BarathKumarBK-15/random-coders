@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>RandomCoders:Chapter3</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/jpeg" 
+	href="images/icon.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/rc.css"/>
+	<script type="text/javascript" src="js/rc.js"></script>
+</head>
+<body>
+<header>
+	<nav>
+		<a href="index.html">Home</a>
+		<a href="ps.html">Practice</a>
+		<a href="q.html">Contests</a>
+		<a href="Solutions.html">Solutions</a>
+		<a href="aboutus.html">About Us</a>
+	</nav>
+</header>
+<main>
+	<br><br>
+	<nav>
+		<button onclick="prob(1)">Problem:1 Kiruba Under Scrutiny!</button>
+		<button onclick="prob(2)">Problem:2 Kiruba's Performance Crisis...</button>
+		<button onclick="prob(3)">Problem:3 Kiruba's Mistakes Revealed!</button>
+		<button onclick="prob(4)">Problem:3 Will Kiruba Leave?</button>
+	</nav>
+	<div id="1">
+		<h2>Problem 1: Kiruba Under Scrutiny!</h2>
+		<p>
+			<h3>Problem Statement</h3>
+Kiruba, one of the problem setter and tester of RANDOM CODERS, is brought under scrutiny by Barath, the Admin of RANDOM CODERS due to Kiruba's poor setting and unbalanced difficulty in Chapter - 2 which was not at all suitable for beginners. So, to really test his skills, Barath gave him a task to perform. The tasks states that, given a binary string, interchange the positions of 1's and 0's and convert it into its decimal equivalent. Formally, for a given binary string S, perform the following operations.<br><br>
+* If S[i] is '0' change it to '1'.<br>
+* If S[i] is '1' change it to '0'.<br>
+* Convert the resultant binary string into its decimal equivalent.<br><br>
+Since, Kiruba was really upset about being scrutinized, he wants you to help him to solve this.
+			<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer, T representing the no. of test cases.<br>
+* The first line of each test case contains a single integer, N representing the length of binary string.<br>
+* The second line of each test case contains a binary string, S of length N.<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 100<br>
+* 1 <= n < 32<br>
+* 0 <= S[i] <= 1<br><br>
+			<h3>Sample Input 0</h3>
+
+3<br>
+3<br>
+101<br>
+5<br>
+01101<br>
+1<br>
+1<br><br>
+			<h3>Sample Output 0</h3>
+2<br>
+18<br>
+0<br><br>
+			<h3>Explanation 0</h3>
+* Case 1: By converting all one's to zero's and vice versa, 101 become 010 which is binary equivalent of 2<br>
+* Case 2: Similarly 01101 becomes 10010 whose decimal equivalent is 18<br>
+* Case 3: Similarly 1 becomes 0 whose decimal value is also 0<br><br>
+</p>
+	</div>
+	<div id="2" class="even">
+		<p>
+			<h2>Problem 2: Kiruba's Performance Crisis...</h2>
+			<h3>Problem Statement</h3>
+Barath is not happy with Kiruba's performance of problem setting in Chapter - 2, so he told Rachit, Designer and Maintance Head of Random Coders to check on Kiruba's performance record for previous N days and told him to check whether he passes the required performance criteria or not. Now, Rachit comes up with a new strategy to compute Kiruba's performance. He converts the linear data of N days into circular form and considers the performance value only if it is strictly greater than the previous and next day's performance. If this condition is satisfied, the performance value is added to Kiruba's net performance. After this process, if the net performance is lesser than minimum performance required to pass the performance criteria print 'NO', else print 'YES'.<br><br>
+Note: Circular data is same as linear data except the fact that, in circular data, the last element is left to first element and the first element is right to last element. Eg: [1,2,3,4], 4 is left to 1 and 1 is right to 4.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer, t representing the no. of test cases.<br>
+* The first line of each test case contains a single integer, N representing the length of the array.<br>
+* The second line of each test case contains N space separated integers, representing circular array, A the performance of Kiruba on each day.<br>
+* The third line of each test case contains a single integer, k representing the minimum performance required to pass the performance criteria.<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 100<br>
+* 2 <= N <= 100<br>
+* 1 <= A[i] <= 100<br>
+* 1 <= k <= 1500<br><br>			
+			<h3>Output Format</h3>
+* For each test case, print "YES" or "NO" (without quotes).<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+5<br>
+1 3 4 2 5<br>
+8<br>
+2<br>
+3 3<br>
+1<br><br>
+			<h3>Sample Output 0</h3>
+YES<br>
+NO<br><br>
+			<h3>Explanation</h3>
+* Case 1: Kiruba hits high performance on days 2 and 5. Therefore total performance = 4 + 5 = 9, which clears the basic requirement. Thus print "YES"<br>
+* Case 2: Similay here the total performance is zero, which is less than the one required. Thus print "NO"<br><br>
+</p>
+	</div>
+	<div id=3>
+		<p>
+			<h2>Problem 3: Kiruba's Mistakes Revealed!</h2>
+			<h3>Problem Statement</h3>
+It was time for Chapter - 3 and the questions set by Kiruba was being tested. Undoubtedly there was a mistake in the question that was set by Kiruba. The original question was, given an array A of N elements, perform the following operations.<br><br>
+* Compute min(A[i] C (A[i] - 1) , A[i] P (A[i] - 1)).<br>
+* Print the sum of all such computations.<br><br>
+But in the above question it was found that, A[i] C (A[i] - 1) was always smaller than A[i] P (A[i] - 1). Therefore, it was not at all necessary to take min of those two parameters. So, to escape from being caught, Kiruba modified the question slightly. The new question now states that,<br><br>
+* Compute A[i] C (A[i] - 1), if A[i] is even.<br>
+* Compute A[i] P (A[i] - 1), if A[i] is odd.<br>
+* Print the sum of all such computations.<br>
+* Note 1: Since, the answer maybe very large, print the sum modulo 10^9 + 7.<br>
+* Note 2: n C r = (n!)/((n - r)! * r!) and n P r = (n!)/(n-r)!.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer, t representing the no. of test cases.<br>
+* The first line of each test case contains a single integer, N representing the length of an array.<br>
+* The second line of each test case contains N space separated integers, A[i] representing the elements of an array.<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 10<br>
+* 1 <= N <= 10000<br>
+* 1 <= A[i] <= 20<br><br>
+			<h3>Output Format</h3>
+* Print a single integer, representing the sum of all the required computations modulo 10^9 + 7<br><br>
+Example:<br><br>
+			<h3>Sample Input 0</h3>
+1 <br>
+3<br>
+2 3 4<br><br>
+			<h3>Sample Output 0</h3>
+12<br><br>
+			<h3>Explanation 0</h3>
+* The first element 2 is even, combination is 2 C (2-1) which is 2<br>
+* Since the second element 3, is odd, it gives 3 P (3-1) which is 6<br>
+* Similarly for the last element we get 4<br>
+* Thus the sum is 2+6+4=12<br><br>
+</p>
+	</div>
+	<div id="4" class="even">
+		<h2>Problem 4: Will Kiruba Leave?</h2>
+		<p>
+			<h3>Problem Statement</h3>
+This week was really frustating for Kiruba and his teammates, since there were several rumours that Kiruba is leaving RANDOM CODERS. But surprisingly Kiruba was given a final opportunity to stay, and this was completely based on mere luck. His teammates gave him a string S (with lowercase English alphabets) of length N and told him to perform the following operations any no. of times (possibly zero).<br><br>
+* For valid i, remove S[i] from the string.
+After performing the given operation, if the resultant string is "kiruba", he will not leave RANDOM CODERS, else he will quit. Find whether Kiruba is leaving RANDOM CODERS or Not!. If he is leaving print "GOODBYE KIRUBA", else print "KIRUBA IS STAYING" (without quotes).<br><br>
+* Note: The resultant string should be "kiruba" only, any other permutations of this word will also result in Kiruba leaving.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer, t representing the no. of test cases.<br>
+* The first line of each test case contains a single integer, N representing the length of string S.<br>
+* The second line of each test case contains a string, S (with lowercase English alphabets) of length N.<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 1000<br>
+* 6 <= N <= 100<br>
+* For every testcase, print "GOODBYE KIRUBA" if Kiruba is leaving, else print "KIRUBA IS STAYING" if Kiruba is staying.<br><br>
+			<h3>Sample Input 0</h3>
+3<br>
+6<br>
+kiruba<br>
+6<br>
+kirbua<br>
+12<br>
+zkkiarjubssa<br><br>
+			<h3>Sample Output 0</h3>
+KIRUBA IS STAYING<br>
+GOODBYE KIRUBA<br>
+KIRUBA IS STAYING<br><br>
+			<h3>Explanation 0</h3>
+* Case 1: The given word itself is kiruba thus print "KIRUBA IS STAYING"<br>
+* Case 2: There is no way to form the word kiruba after performing the given operations. Thus print "GOODBYE KIRUBA"<br>
+* Case 3: zk ki a r j ub ss a . Thus print "KIRUBA IS STAYING"<br><br>
+</p>
+	</div>
+    <button onclick="gotochap(3)">View Solutions</button>
+</main>
+<footer>
+	<p>Instagram : <a href="https://www.instagram.com/randomcoders/" target="_blank">@randomcoders</a></p>
+	<p>email id  : randomcoders4@gmail.com</p>
+	<p>HackerRank: <a href="https://www.hackerrank.com/randomcoders4" target="_blank">randomcoders4</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>RandomCoders:Chapter4</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/jpeg" 
+	href="images/icon.jpeg"/>
+	<link rel="stylesheet" type="text/css" href="css/rc.css"/>
+	<script type="text/javascript" src="js/rc.js"></script>
+</head>
+<body>
+<header>
+	<nav>
+		<a href="index.html">Home</a>
+		<a href="ps.html">Practice</a>
+		<a href="q.html">Contests</a>
+		<a href="Solutions.html">Solutions</a>
+		<a href="aboutus.html">About Us</a>
+	</nav>
+</header>
+<main>
+	<br><br>
+	<nav>
+		<button onclick="prob(1)">Problem:1 Primo Round: Foreseen Betrayal</button>
+		<button onclick="prob(2)">Problem:2 Primo Round : Rachit's Secondo Escape</button>
+		<button onclick="prob(3)">Problem:3 Terzo Round : Rachit's Narcos Addiction</button>
+		<button onclick="prob(4)">Problem:4 il Quarto Round : Magia Lake Adventure</button>
+        <button onclick="prob(5)">Problem:5 Quinto Round : Smoke Shisha Play Fifa</button>
+	</nav>
+	<div id="1">
+		<h2>Problem 1: Primo Round: Foreseen Betrayal</h2>
+		<p>
+			<h3>Problem Statement</h3>
+Yes it's official! Kiruba is finally not leaving RANDOM CODERS. To celebrate this, Barath has arranged for a foreign trip. He was fascinated about the place called Sudan, so they planned to go there. Jayan Praveen who is also a part of the Designing Team was highly underrated compared to Rachit. So, he was very jealous of him and planned something for him. He arranged a survival game for Rachit in Sudan believing that Rachit won't survive it, so that he could become the only Designer for RANDOM CODERS. Rachit was pushed into primo round unwillingly. Now, the only way for him to survive is to complete game.<br><br>
+In the primo round, Rachit is given a stick of length L and is required to cut the stick into n equal parts, such that the length of each part is an integer greater than one. Print "YES", if Rachit could survive this game, else print "NO". Determine the fate of Rachit in primo round.<br><br>
+Note: The lengths of given stick is always non-prime.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer, t representing the no. of test cases.<br>
+* The first line of each test case contains a single integer, l representing the length of the stick given.<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 100<br>
+* 1 <= l <= 10 ^ 16<br>
+* l is always a non-prime number.<br><br>
+            <h3>Output Format</h3>
+* For each test case, print "YES" if the stick can be divided into n equal parts with length of each part is greater than one, else print "NO" (without quotes).<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+9<br>
+12<br><br>
+			<h3>Sample Output 0</h3>
+YES<br>
+YES<br><br>
+			<h3>Explanation 0</h3>
+* Case 1: The stick of length 9 can be broken into 3 qual parts each of length 3.Thus print 'YES'<br><br>
+* Case 2: The stick of length 12 can be broken in multiple ways such as 2 parts each of length 6 units, 3 parts each of lenght 4 units and so on. Thus, print "YES"<br><br>
+</p>
+	</div>
+	<div id="2" class="even">
+		<p>
+			<h2>Problem 2: Primo Round : Rachit's Secondo Escape</h2>
+			<h3>Problem Statement</h3>
+Rachit, by luck figured it out in the primo round. But Jayan Praveen was more smarter than him. So, if he could break the stick of length l into n equal parts such that the length of each part is an integer greater than one, he ordered Rachit to find the length at which the value of n is maximised.<br><br>
+Hint: For n to be maximised, the length of each broken part of the stick must be as minimum as possible.<br><br>
+Note: The lengths of given stick is always non-prime.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer, t representing the no. of test cases.<br>
+* The first and the only line of each test case contains a single integer, l representing the length of the given stick (which is always non-prime).<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 100<br>
+* 1 <= l <= 10 ^ 8<br>
+* l is always a non-prime number.<br><br>			
+			<h3>Output Format</h3>
+* For each test case print a single integer greater than one which represents the length of broken part at which the value of n is maximised.<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+25<br>
+12<br><br>
+			<h3>Sample Output 0</h3>
+5<br>
+2<br><br>
+			<h3>Explanation</h3>
+* Case 1: The stick of length 25 can only be cut equally as 5 parts each of length 5 units. thus print '5'
+* Case 2: The stick of length 12 can be cut in various ways as, 2 parts of length 6 each, 3 parts of length 4 each, 4 parts of length 3 each and 6 parts of lenght 2 each. Thus the maximum number of pieces is obtained when length of each part is 2. Thus print '2'.<br><br>
+</p>
+	</div>
+	<div id=3>
+		<p>
+			<h2>Problem 3: Terzo Round : Rachit's Narcos Addiction</h2>
+			<h3>Problem Statement</h3>
+The earlier rounds were piece of cake for Rachit since it just invloved logical thinking. So, this time Jayan Praveen wanted to test his physical endurance. There are N hurdles of heigths variying from 1 to N present in an array with 1-based indexing. Jayan Praveen chooses a set of hurdles from the above starting from index a to b (a <= b, both inclusive). Rachit knows that he would not be able to clear the task and thereby decides to consume drugs. The quantity of drugs consumed must be equal to the total height that Rachit must jump to clear this challenge. Consuming drugs more than the required quantity may end up in severe issues, on the other hand consuming less than the required will be a barrier for Rachit to clear this challenge. Help him find the exact quantity of drugs that he must consume.<br><br>
+Note 1: To clear a hurdle, Rachit must jump at the height exactly one greater than the height of the hurdle.<br><br>
+Note 2: The value of drugs consumed may be very high, therefore compute it modulo 10^9+7.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer, t representing the no. of test cases.<br>
+* The first line of each test case contains a single integer, N representing the no. of hurdles.<br>
+* The second line of each test case contains two space seperated integers, a and b representing the starting and ending index of the set of hurdles chosen by Jayan Praveen.<br><br>
+			<h3>Constraints</h3>
+* 1 <= t <= 100<br>
+* 1 <= N <= 10 ^ 9<br>
+* 1 <= a <= b <= N<br>
+* Sub Task 1( 50 points ): 1 <= N <= 10^6<br>
+* Sub Task 2( 100 points ): Original Constraints<br><br>
+			<h3>Output Format</h3>
+* For each test case, print a single integer representing the amount of drugs modulo 10^9+7 to be consumed by Rachit to clear this challenge safely.<br><br>
+			<h3>Sample Input 0</h3>
+1<br>
+5<br>
+1 4<br><br>
+			<h3>Sample Output 0</h3>
+14<br><br>
+			<h3>Explanation 0</h3>
+* The choosen hurdles are of length 1, 2, 3 and 4. therfore Rachit has to jump heights 2, 3, 4 and 5. Therfore total height to be jumped by Rachit is 14. Thus quantity of drug to be consumed is 14<br><br>
+</p>
+	</div>
+	<div id="4" class="even">
+		<h2>Problem 4: il Quarto Round : Magia Lake Adventure</h2>
+		<p>
+			<h3>Problem Statement</h3>
+Rachit was lucky that he consumed the right amount of drugs and was able to clear the third round of his survival game.Rachit's next challenge is on a whole new destination.This time Rachit is required to swim across a square shaped magia lake, which has its own unique quality.That is, the depth of the lake is highest at the center and the depth decrease as we move towards the shore.For examaple, if the order of the lake is 3 and 6, then the value of depths as per top view are as follows,<br><br>
+For N=3<br><br>
+    1 1 1<br>
+    1 2 1   There are 8 points in the lake with depth as 1 and 1 point with depth 2<br>
+    1 1 1<br><br>
+For N=6<br><br>
+    1 1 1 1 1 1<br>
+    1 2 2 2 2 1<br>
+    1 2 3 3 2 1 There are 20 1's, 12 2's and 4 3's of depth in the lake<br>
+    1 2 3 3 2 1<br>
+    1 2 2 2 2 1<br>
+    1 1 1 1 1 1<br><br>
+The depth of the centre is chosen such that the depth at the shore is always 1.<br><br>
+Rachit, in order to successfully cross the lake needs to know the various depths and number of points in the lake which has that particular depth. Help Rachit to clear the challenge and to face the final showdown.<br><br>
+			<h3>Input Format</h3>
+* The first line contains a single integer T, representing the number of test cases<br>
+* The first an only line of each test case contains a single integer N, repersenting the order(length) of the lake<br><br>
+			<h3>Constraints</h3>
+* 1 <= T <= 1000<br>
+* 1 <= N <= 1000<br><br>
+            <h3>Output Format</h3>
+* For each test, print the depths in ascending order and its corresponding count.(Each depth in a new line)<br><br>
+			<h3>Sample Input 0</h3>
+2<br>
+3<br>
+6<br><br>
+			<h3>Sample Output 0</h3>
+1 8<br>
+2 1<br>
+1 20<br>
+2 12<br>
+3 4<br><br>
+			<h3>Explanation 0</h3>
+* As explain above in the problem statement<br><br>
+</p>
+	</div>
+    <div id="5">
+        <h2>Problem 5: Quinto Round : Smoke Shisha Play Fifa</h2>
+        <p>
+            <h3>Problem Statement</h3>
+It's time for the Final Showdown. Now Jayan Praveen, wanted Rachit to survive a game based on mere luck. The final challenge is a football game between Offenders and Defenders. There are always four defeners, each with some specific energia. For example<br><br>
+40  50  50  40<br>
+D1  D2  D3  D4<br><br>
+The formation for the Offenders consists of three players, with their own energia.For example<br><br>
+  60    45    55<br>
+  F1    F2    F3<br><br>
+In any situation, for any Offender to surpass the defense, his energia must be strictly greater than that of the two nearest defenders.<br><br>
+In the above situation, F1 can surpass the defence as his energia is strictly greater than his nearest defenders ( D1 and D2 ). Similarly, F3 will be able to surpass the defense.<br><br>
+However, F2 wont be able to surpass the defense as the energia of D2 and D3 are greater than his.<br><br>
+Rachit, has N Offenders with their own Energia, among which he can choose any three players to surpass the defense, randomly. <br>Rachit, wants to survive the final showdown and thereby asks Barath and Kiruba to find the probablity that he will win the game. If the probablity of him winning is P/Q.<br><br>
+Find P and Q such that P/Q is in the most possible simplified ratio.<br><br>
+Note: Rachit wins the game if all three player would be able to surpass their corresponding two defenders<br><br>
+            <h3>Input Format</h3>
+* The first line contains a single integer T, representing the number of test cases<br>
+* The first line of each test case contains 4 space seperated integers, representing the energia of the defenders.<br>
+* The second line of each test case contains a single integer N, representing the number of Offenders available<br>
+* The third and the last line of each test case contains N space seperated integers representing the Energia of corresponding Offender.<br><br>
+            <h3>Constraints</h3>
+* 1 <= T <= 100<br>
+* 1 <= D[i] <= 100<br>
+* 3 <= N <= 1000<br>
+* 1 <= F[i] <= 100<br><br>
+            <h3>Output Format</h3>
+* For each test case, print 2 space seperated integers, representing the values of P and Q, such that P/Q is the most simplified ratio<br><br>
+            <h3>Sample Input 0</h3>
+1<br>
+30 40 60 50<br>
+4<br>
+65 65 45 35<br><br>
+            <h3>Sample Output 0</h3>
+1 12<br><br>
+            <h3>Explanation 0</h3>
+* 3 Players out of the given four players can be chosen randomly in 24 different ways.<br>
+* If the given four players are considered P1, P2, P3 and P4 respectively. Out of all the formations only 2 formations, P3 P1 P2 and P3 P2 P1 will be able to surpass the defense. Thus the probability of winning is 2/24, whose simplified form is 1/12.<br>
+* Thus print, "1 12"<br><br>
+</p>
+    </div>
+</main>
+<footer>
+	<p>Instagram : <a href="https://www.instagram.com/randomcoders/" target="_blank">@randomcoders</a></p>
+	<p>email id  : randomcoders4@gmail.com</p>
+	<p>HackerRank: <a href="https://www.hackerrank.com/randomcoders4" target="_blank">randomcoders4</a></p>
+</footer>
+</body>
+</html>
